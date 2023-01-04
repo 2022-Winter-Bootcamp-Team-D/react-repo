@@ -85,7 +85,7 @@ export default function ListTable() {
 
   return (
     <Paper className='tableStyle'>
-      <TableContainer sx={{ maxHeight: 550 }}>
+      <TableContainer sx={{ maxHeight: 500 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

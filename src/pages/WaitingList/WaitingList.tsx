@@ -10,7 +10,7 @@ function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
 
   return (
-    <Container style={{display: 'flex'}}>
+    <Container style={{display: 'flex', overflow: 'hidden'}}>
       <div>
         <TableTitle/>
         <ListTable/>
