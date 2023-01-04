@@ -6,11 +6,11 @@ const TableRow = ({ key, data}: any) => {
     return (
         <>
         <tr key={key}>
-            <td>{RowData.instance}</td>
-            <td>{RowData.application}</td>
-            <td> {(RowData.status)? "green":"red"} </td>
-            <td>{(RowData.blocked)? "green":"red"}</td>
-            <td>{(RowData.stop)? "green":"red"}</td>
+            <td>{RowData.number}</td>
+            <td>{RowData.name}</td>
+            <td> {RowData.people} </td>
+            <td>{RowData.phoneNumber}</td>
+            <td>{RowData.phoneNumber}</td>
         </tr>
         </>
     )

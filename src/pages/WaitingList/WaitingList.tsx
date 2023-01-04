@@ -2,7 +2,7 @@ import { Container } from "@material-ui/core";
 import React from "react";
 
 import TimeBar from "../../components/WaitingList/TimeBar"
-import ManageTable from "../../components/WaitingList/ManageTable";
+import ListTable from "../../components/WaitingList/ListTable";
 
 
 function WaitingList() {
@@ -15,7 +15,7 @@ function WaitingList() {
       </header>
       
       <TimeBar/>
-      <ManageTable/>
+      <ListTable/>
 
       <footer>
       </footer>
