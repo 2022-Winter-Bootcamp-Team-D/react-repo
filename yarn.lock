@@ -1828,6 +1828,18 @@
     "@svgr/plugin-svgo" "^5.5.0"
     "loader-utils" "^2.0.0"
 
+"@tanstack/react-table@^8.7.4":
+  "integrity" "sha512-4Q1OV3kUSxbtekclS3sqjCyCDowqCPruUCfHm1nGoPSmVLRCHoQ1E2rmzTVGeocEKgV9TDnj39tOgGwcADPuPA=="
+  "resolved" "https://registry.npmjs.org/@tanstack/react-table/-/react-table-8.7.4.tgz"
+  "version" "8.7.4"
+  dependencies:
+    "@tanstack/table-core" "8.7.4"
+
+"@tanstack/table-core@8.7.4":
+  "integrity" "sha512-OPhzca7e83KGukxLpZ+4F9OBp9CZXi9b/OGJBH8dlC3wpffcSSDczYGUGJKG7wirXQ6cUVYL+9G6UrrdnblKNQ=="
+  "resolved" "https://registry.npmjs.org/@tanstack/table-core/-/table-core-8.7.4.tgz"
+  "version" "8.7.4"
+
 "@testing-library/dom@^8.5.0":
   "integrity" "sha512-P6iIPyYQ+qH8CvGauAqanhVnjrnRe0IZFSYCeGkSRW9q3u8bdVn2NPI+lasFyVsEQn1J/IFmp5Aax41+dAP9wg=="
   "resolved" "https://registry.npmjs.org/@testing-library/dom/-/dom-8.19.1.tgz"
@@ -2109,6 +2121,13 @@
   "integrity" "sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg=="
   "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.10.tgz"
   "version" "18.0.10"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-table@^7.7.14":
+  "integrity" "sha512-TYrv7onCiakaG1uAu/UpQ9FojNEt/4/ht87EgJQaEGFoWV606ZLWUZAcUHzMxgc3v1mywP1cDyz3qB4ho3hWOw=="
+  "resolved" "https://registry.npmjs.org/@types/react-table/-/react-table-7.7.14.tgz"
+  "version" "7.7.14"
   dependencies:
     "@types/react" "*"
 
@@ -3201,7 +3220,7 @@
   "resolved" "https://registry.npmjs.org/check-types/-/check-types-11.2.2.tgz"
   "version" "11.2.2"
 
-"chokidar@^3.4.2", "chokidar@^3.5.3":
+"chokidar@^3.4.2", "chokidar@^3.5.3", "chokidar@>=3.0.0 <4.0.0":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
   "resolved" "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   "version" "3.5.3"
@@ -5205,6 +5224,11 @@
   "integrity" "sha512-+hBruaLSQvkPfxRiTLK/mi4vLH+/VQS6z2KJahdoxlleFOI8ARqzOF17uy12eFDlqWmPoygwc5evgwcp+dlHhg=="
   "resolved" "https://registry.npmjs.org/immer/-/immer-9.0.17.tgz"
   "version" "9.0.17"
+
+"immutable@^4.0.0":
+  "integrity" "sha512-7WYV7Q5BTs0nlQm7tl92rDYYoyELLKHoDMBKhrxEoiV4mrfVdRz8hzPiYOzH7yWjzoVEamxRuAqhxL2PLRwZYQ=="
+  "resolved" "https://registry.npmjs.org/immutable/-/immutable-4.2.1.tgz"
+  "version" "4.2.1"
 
 "import-fresh@^3.0.0", "import-fresh@^3.1.0", "import-fresh@^3.2.1":
   "integrity" "sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw=="
@@ -7846,6 +7870,11 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
+"react-table@^7.8.0":
+  "integrity" "sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA=="
+  "resolved" "https://registry.npmjs.org/react-table/-/react-table-7.8.0.tgz"
+  "version" "7.8.0"
+
 "react-transition-group@^4.4.0":
   "integrity" "sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
@@ -8146,6 +8175,15 @@
     "klona" "^2.0.4"
     "neo-async" "^2.6.2"
 
+"sass@^1.57.1":
+  "integrity" "sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw=="
+  "resolved" "https://registry.npmjs.org/sass/-/sass-1.57.1.tgz"
+  "version" "1.57.1"
+  dependencies:
+    "chokidar" ">=3.0.0 <4.0.0"
+    "immutable" "^4.0.0"
+    "source-map-js" ">=0.6.2 <2.0.0"
+
 "sax@~1.2.4":
   "integrity" "sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw=="
   "resolved" "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz"
@@ -8372,7 +8410,7 @@
   "resolved" "https://registry.npmjs.org/source-list-map/-/source-list-map-2.0.1.tgz"
   "version" "2.0.1"
 
-"source-map-js@^1.0.1", "source-map-js@^1.0.2":
+"source-map-js@^1.0.1", "source-map-js@^1.0.2", "source-map-js@>=0.6.2 <2.0.0":
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   "version" "1.0.2"
