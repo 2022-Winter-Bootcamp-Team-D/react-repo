@@ -1,7 +1,9 @@
 import React from "react";
+import Button from "../../styles/WaitingList/Button";
 
-const WaitingList = () => {
-  return <div>Main Page</div>;
-};
+
+function WaitingList() {
+  return <Button>External</Button>;
+}
 
 export default WaitingList;
