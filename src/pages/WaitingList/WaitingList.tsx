@@ -1,8 +1,8 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 
-import TimeBar from "../../components/WaitingList/TimeBar"
 import ListTable from "../../components/WaitingList/ListTable";
+import StickyHeadTable from "../../components/WaitingList/TimeBar";
 
 
 function WaitingList() {
@@ -14,7 +14,6 @@ function WaitingList() {
         대기 목록
       </header>
       
-      <TimeBar/>
       <ListTable/>
 
       <footer>

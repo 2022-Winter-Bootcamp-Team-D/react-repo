@@ -9,25 +9,39 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination/TablePagination';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#FFF0C9',
-    color: 'black'
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+interface Column {
+  id: 'number' | 'name' | 'people' | 'phoneNumber';
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
+}
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
+const columns: readonly Column[] = [
+  { id: 'number', label: '순번', minWidth: 170 },
+  { id: 'name', label: '예약자', minWidth: 100 },
+  {
+    id: 'people',
+    label: '인원 수',
+    minWidth: 170,
+    align: 'right',
+    format: (value: number) => value.toLocaleString('en-US'),
   },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 20,
+  {
+    id: 'phoneNumber',
+    label: '휴대폰 번호',
+    minWidth: 170,
+    align: 'right',
+    format: (value: number) => value.toLocaleString('en-US'),
   },
-}));
+];
+
+interface Data {
+  number: number,
+  name: string,
+  people: number,
+  phoneNumber: string,
+}
 
 function createData(
     number: number,
@@ -55,7 +69,7 @@ const rows = [
 
 export default function ListTable() {
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(100);
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
@@ -65,49 +79,57 @@ export default function ListTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
   return (
-    <TableContainer component={Paper}>
-        <Paper sx={{ 
-        width: '75%', 
-        overflow: 'hidden',
-        }}>
-        <Table sx={{ minWidth: 300, maxHeight: 440  }} aria-label="sticky table">
-        <TableHead>
-        <TableRow>
-            <StyledTableCell>순번</StyledTableCell>
-            <StyledTableCell align="right">예약자</StyledTableCell>
-            <StyledTableCell align="center">인원수&nbsp;(명)</StyledTableCell>
-            <StyledTableCell align="right">휴대폰번호</StyledTableCell>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: 440 }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ minWidth: column.minWidth }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
             
-        </TableRow>
-        </TableHead>
-        <TableBody>
-        {rows
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => (
-            <StyledTableRow key={row.name}>
-            <StyledTableCell component="th" scope="row">
-                {row.number}
-            </StyledTableCell>
-            <StyledTableCell align="right">{row.name}</StyledTableCell>
-            <StyledTableCell align="center">{row.people}</StyledTableCell>
-            <StyledTableCell align="right">{row.phoneNumber}</StyledTableCell>
-            </StyledTableRow>
-            
-        ))}
-        </TableBody>
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={0} key={row.number}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+          
+          </TableBody>
         </Table>
-        <TablePagination
-            rowsPerPageOptions={[5, 10, 15]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-        </Paper>
-    </TableContainer>
-    
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Paper>
   );
 }
