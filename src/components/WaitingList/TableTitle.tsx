@@ -1,16 +1,17 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import styles from './WaitingList.scss';
+import styles from './ListTable.scss';
 
-function TimeBar() {
+function TableTitle() {
   
   return (
     <Container>
-      <div className={styles.timeBar}>
+      <div className={styles.tableTitle}>
+      대기 목록
       2022 - 12 - 30   23 : 48
       </div>
     </Container>
   );
 }
 
-export default TimeBar;
+export default TableTitle;

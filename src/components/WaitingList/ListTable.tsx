@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import styles from './ListTable.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
@@ -10,30 +10,31 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination/TablePagination';
 
 interface Column {
-  id: 'number' | 'name' | 'people' | 'phoneNumber';
+  id: 'number' | 'name' | 'people' | 'phoneNumber' | 'alarm' | 'enter' | 'cancel';
   label: string;
   minWidth?: number;
-  align?: 'right';
+  align?: 'center';
   format?: (value: number) => string;
 }
 
 const columns: readonly Column[] = [
-  { id: 'number', label: '순번', minWidth: 170 },
-  { id: 'name', label: '예약자', minWidth: 100 },
+  { id: 'number', label: '순번', minWidth: 30 },
+  { id: 'name', label: '예약자', minWidth: 30 },
   {
     id: 'people',
     label: '인원 수',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
+    minWidth: 30,
+    align: 'center',
   },
   {
     id: 'phoneNumber',
     label: '휴대폰 번호',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
+    minWidth: 30,
+    align: 'center',
   },
+  { id: 'alarm', label: '고객호출', minWidth: 30 },
+  { id: 'enter', label: '고객입장', minWidth: 30 },
+  { id: 'cancel', label: '대기취소', minWidth: 30 },
 ];
 
 interface Data {
@@ -41,6 +42,9 @@ interface Data {
   name: string,
   people: number,
   phoneNumber: string,
+  alarm: string,
+  enter: string,
+  cancel: string
 }
 
 function createData(
@@ -48,23 +52,32 @@ function createData(
     name: string,
     people: number,
     phoneNumber: string,
+    alarm: string,
+    enter: string,
+    cancel: string
     ) {
-    return { number, name, people, phoneNumber};
+    return { number, name, people, phoneNumber, alarm, enter, cancel};
 }
 
 const rows = [
-    createData(1, '김철수', 2, '010-1234-5678'),
-    createData(2, '김철수', 2, '010-1234-5678'),
-    createData(3, '김철수', 2, '010-1234-5678'),
-    createData(4, '김철수', 2, '010-1234-5678'),
-    createData(5, '김철수', 2, '010-1234-5678'),
-    createData(6, '김철수', 2, '010-1234-5678'),
-    createData(7, '김철수', 2, '010-1234-5678'),
-    createData(8, '김철수', 2, '010-1234-5678'),
-    createData(9, '김철수', 2, '010-1234-5678'),
-    createData(10, '김철수', 2, '010-1234-5678'),
-    createData(11, '김철수', 2, '010-1234-5678'),
-    createData(12, '김철수', 2, '010-1234-5678'),
+    createData(1, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(2, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(3, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(4, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(5, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(6, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(7, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(8, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(9, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(10, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(11, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(12, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(13, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(14, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(15, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(10, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(16, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(17, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
   ];
 
 export default function ListTable() {
@@ -81,7 +94,7 @@ export default function ListTable() {
     };
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper className="tableStyle">
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -103,7 +116,7 @@ export default function ListTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={0} key={row.number}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.number}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
