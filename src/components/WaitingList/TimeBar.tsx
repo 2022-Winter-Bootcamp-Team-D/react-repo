@@ -2,24 +2,16 @@ import { Container } from "@material-ui/core";
 import React from "react";
 import './WaitingList.css';
 
-function WaitingList() {
+function TimeBar() {
   document.body.style.backgroundColor = "#FFFBD9";
 
   return (
     <Container>
-      <header>
-        대기 목록
-      </header>
-      
-      <div>
-
+      <div style={TimeBar}>
+      2022 - 12 - 30   23 : 48
       </div>
-
-      <footer>
-
-      </footer>
     </Container>
   );
 }
 
-export default WaitingList;
+export default TimeBar;
