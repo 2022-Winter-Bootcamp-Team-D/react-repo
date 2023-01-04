@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ListTable.scss';
+import './ListTable.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -36,16 +36,6 @@ const columns: readonly Column[] = [
   { id: 'enter', label: '고객입장', minWidth: 30 },
   { id: 'cancel', label: '대기취소', minWidth: 30 },
 ];
-
-interface Data {
-  number: number,
-  name: string,
-  people: number,
-  phoneNumber: string,
-  alarm: string,
-  enter: string,
-  cancel: string
-}
 
 function createData(
     number: number,
@@ -94,8 +84,8 @@ export default function ListTable() {
     };
 
   return (
-    <Paper className="tableStyle">
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper className='tableStyle'>
+      <TableContainer sx={{ maxHeight: 550 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

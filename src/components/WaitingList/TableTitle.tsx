@@ -1,14 +1,19 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import styles from './ListTable.scss';
+import './ListTable.scss';
 
 function TableTitle() {
   
   return (
     <Container>
-      <div className={styles.tableTitle}>
-      대기 목록
-      2022 - 12 - 30   23 : 48
+      <div id = "wrap">
+        <div className='tableTitle'>
+          대기 목록
+        </div>
+        <br/>
+        <div className='tableTime'>
+          2022 - 12 - 30 &nbsp; 23 : 48
+        </div>
       </div>
     </Container>
   );
