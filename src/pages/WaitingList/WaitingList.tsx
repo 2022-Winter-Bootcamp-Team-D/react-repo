@@ -1,6 +1,7 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import './WaitingList.css';
+
+import TimeBar from "../../components/WaitingList/TimeBar"
 
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
@@ -11,9 +12,7 @@ function WaitingList() {
         대기 목록
       </header>
       
-      <div>
-
-      </div>
+      <TimeBar/>
 
       <footer>
 
