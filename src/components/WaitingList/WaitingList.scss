@@ -1,0 +1,84 @@
+.tableStyle {
+    margin-Top: 1em;
+    margin-Left: 30%;
+    width: 78%;
+    height: 500;
+    overflow: 'hidden';
+}
+
+.tableTitle{
+    margin-top: 1em;
+    margin-Left: 20%;
+    width: 10em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
+}
+
+.tableTime{
+    margin-Left: 28.5%;
+    width: 30em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    background-color: #FBE5AD;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+}
+
+.offlineRegisterButton{
+    margin-top: 8em;
+    margin-Left: 28.5%;
+    width: 1em;
+    height: 1em;
+    padding: 2em;
+    color: black;
+    background-color: #A2F187;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: 'left';
+}
+
+.offlineRegisterText{
+    width: 10em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+    float: 'left';
+}
+
+.stopRegisterButton{
+    margin-top: 1em;
+    margin-Left: 28.5%;
+    width: 1em;
+    height: 1em;
+    padding: 2em;
+    color: black;
+    background-color: #F96F6F;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: 'left';
+}
+
+.stopRegisterText{
+    color: black;
+    width: 10em;
+    height: 1em;
+    padding: 0.5em;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+    float: 'left';
+}
