@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination/TablePagination';
 
 interface Column {
-  id: 'number' | 'name' | 'people' | 'phoneNumber' | 'alarm' | 'enter' | 'cancel';
+  id: 'number' | 'name' | 'people' | 'phoneNumber';
   label: string;
   minWidth?: number;
   align?: 'center';
@@ -32,9 +32,6 @@ const columns: readonly Column[] = [
     minWidth: 30,
     align: 'center',
   },
-  { id: 'alarm', label: '고객호출', minWidth: 30 },
-  { id: 'enter', label: '고객입장', minWidth: 30 },
-  { id: 'cancel', label: '대기취소', minWidth: 30 },
 ];
 
 function createData(
@@ -42,32 +39,31 @@ function createData(
     name: string,
     people: number,
     phoneNumber: string,
-    alarm: string,
-    enter: string,
-    cancel: string
     ) {
-    return { number, name, people, phoneNumber, alarm, enter, cancel};
+    return { number, name, people, phoneNumber};
 }
 
 const rows = [
-    createData(1, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(2, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(3, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(4, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(5, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(6, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(7, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(8, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(9, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(10, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(11, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(12, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(13, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(14, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(15, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(10, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(16, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
-    createData(17, '김철수', 2, '010-1234-5678', '호출하기', '입장완료', '취소하기'),
+    createData(1, '김철수', 2, '010-1234-5678'),
+    createData(2, '김철수', 2, '010-1234-5678'),
+    createData(3, '김철수', 2, '010-1234-5678'),
+    createData(4, '김철수', 2, '010-1234-5678'),
+    createData(5, '김철수', 2, '010-1234-5678'),
+    createData(6, '김철수', 2, '010-1234-5678'),
+    createData(7, '김철수', 2, '010-1234-5678'),
+    createData(8, '김철수', 2, '010-1234-5678'),
+    createData(9, '김철수', 2, '010-1234-5678'),
+    createData(10, '김철수', 2, '010-1234-5678'),
+    createData(11, '김철수', 2, '010-1234-5678'),
+    createData(12, '김철수', 2, '010-1234-5678'),
+    createData(13, '김철수', 2, '010-1234-5678'),
+    createData(14, '김철수', 2, '010-1234-5678'),
+    createData(15, '김철수', 2, '010-1234-5678'),
+    createData(16, '김철수', 2, '010-1234-5678'),
+    createData(17, '김철수', 2, '010-1234-5678'),
+    createData(18, '김철수', 2, '010-1234-5678'),
+    createData(19, '김철수', 2, '010-1234-5678'),
+    createData(20, '김철수', 2, '010-1234-5678'),
   ];
 
 export default function ListTable() {
@@ -98,6 +94,9 @@ export default function ListTable() {
                   {column.label}
                 </TableCell>
               ))}
+              <TableCell align="center"></TableCell>
+              <TableCell align="center"></TableCell>
+              <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -117,6 +116,9 @@ export default function ListTable() {
                         </TableCell>
                       );
                     })}
+                    <TableCell align="center"><button>호출하기</button></TableCell>
+                    <TableCell align="center"><button>입장완료</button></TableCell>
+                    <TableCell align="center"><button>대기취소</button></TableCell>
                   </TableRow>
                 );
               })}
