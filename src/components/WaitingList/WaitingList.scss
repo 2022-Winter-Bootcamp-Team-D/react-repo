@@ -1,14 +1,14 @@
 .tableStyle {
-    margin-Top: 1em;
-    margin-Left: 21%;
+    margin-Top: 1.5em;
+    margin-Left: 3em;
     width: 78%;
     height: 500;
     overflow: 'hidden';
 }
 
 .tableTitle{
-    margin-top: 1em;
-    margin-Left: 10%;
+    margin-top: 2em;
+    margin-Left: -2.5em;
     width: 10em;
     color: black;
     font-family: 'BMJUA';
@@ -16,7 +16,6 @@
 }
 
 .tableTime{
-    margin-Left: 18.5%;
     width: 30em;
     height: 1em;
     padding: 0.5em;
@@ -29,6 +28,7 @@
 
 .offlineRegisterButton{
     margin-top: 8em;
+    margin-left: -5.75em;
     width: 1em;
     height: 1em;
     padding: 2em;
@@ -44,7 +44,7 @@
 }
 
 .offlineRegisterText{
-    margin-right: 22%;
+    margin-left: -5.75em;
     width: 10em;
     height: 1em;
     padding: 0.5em;
@@ -58,6 +58,7 @@
 
 .stopRegisterButton{
     margin-top: 1em;
+    margin-left: -5.75em;
     width: 1em;
     height: 1em;
     padding: 2em;
@@ -73,10 +74,11 @@
 }
 
 .stopRegisterText{
-    color: black;
+    margin-left: -5.75em;
     width: 10em;
     height: 1em;
     padding: 0.5em;
+    color: black;
     font-family: 'BMJUA';
     font-size: 2em;
     border-radius: 1em;
