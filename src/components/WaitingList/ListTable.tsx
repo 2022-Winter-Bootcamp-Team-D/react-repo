@@ -94,9 +94,9 @@ export default function ListTable() {
                   {column.label}
                 </TableCell>
               ))}
-              <TableCell align="center">호출하기</TableCell>
-              <TableCell align="center">입장완료</TableCell>
-              <TableCell align="center">대기취소</TableCell>
+              <TableCell align="center"></TableCell>
+              <TableCell align="center"></TableCell>
+              <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -116,9 +116,9 @@ export default function ListTable() {
                         </TableCell>
                       );
                     })}
-                    <TableCell align="center"><button>1</button></TableCell>
-                    <TableCell align="center"><button>2</button></TableCell>
-                    <TableCell align="center"><button>3</button></TableCell>
+                    <TableCell align="center"><button>호출하기</button></TableCell>
+                    <TableCell align="center"><button>입장완료</button></TableCell>
+                    <TableCell align="center"><button>대기취소</button></TableCell>
                   </TableRow>
                 );
               })}
