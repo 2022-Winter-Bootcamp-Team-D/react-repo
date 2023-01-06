@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CustomerRegister from './pages/CustomerRegister/CustomerRegister';
+import Login from './pages/CustomerRegister/Login';
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,6 +15,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<CustomerRegister />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
