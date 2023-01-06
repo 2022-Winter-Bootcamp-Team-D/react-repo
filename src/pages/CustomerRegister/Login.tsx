@@ -17,7 +17,7 @@ function Login() {
       </Box>
       <div className="InputStyle">
       <button className="ButtonStyle" >로그인</button>
-      <button className="ButtonStyle" >가게등록</button>
+      <button className="ButtonStyle2" >가게등록</button>
       </div>
       </div>
       );
