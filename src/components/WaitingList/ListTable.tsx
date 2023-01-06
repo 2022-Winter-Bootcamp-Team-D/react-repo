@@ -8,6 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination/TablePagination';
+import IconButton from '@mui/material/IconButton';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface Column {
   id: 'number' | 'name' | 'people' | 'phoneNumber';
@@ -94,9 +98,9 @@ export default function ListTable() {
                   {column.label}
                 </TableCell>
               ))}
-              <TableCell align="center"></TableCell>
-              <TableCell align="center"></TableCell>
-              <TableCell align="center"></TableCell>
+              <TableCell align="center">호출하기</TableCell>
+              <TableCell align="center">입장완료</TableCell>
+              <TableCell align="center">대기취소</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -116,9 +120,9 @@ export default function ListTable() {
                         </TableCell>
                       );
                     })}
-                    <TableCell align="center"><button>호출하기</button></TableCell>
-                    <TableCell align="center"><button>입장완료</button></TableCell>
-                    <TableCell align="center"><button>대기취소</button></TableCell>
+                    <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
+                    <TableCell align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
+                    <TableCell align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
                 );
               })}
