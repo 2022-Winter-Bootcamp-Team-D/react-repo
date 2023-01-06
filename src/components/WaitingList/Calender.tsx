@@ -7,6 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
+import './Calender.scss';
 
 dayjs.extend(isBetweenPlugin);
 
@@ -69,8 +70,8 @@ export default function Calender() {
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StaticDatePicker
+    <LocalizationProvider dateAdapter={AdapterDayjs}> 
+      <StaticDatePicker className='Calender'
         displayStaticWrapperAs="desktop"
         label="Week picker"
         value={value}
