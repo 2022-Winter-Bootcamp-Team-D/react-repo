@@ -22,6 +22,7 @@ function WaitingList() {
         <StoreInformation/>
         </div>
       </div>
+      <div className="VerticalLine"></div>
       <div>
         <TableTitle/>
         <ListTable/>
