@@ -9,7 +9,7 @@ import {
 // import CustomerRegister from "./pages/CustomerRegister/CustomeRegister";
 // import StoreRegister from "./pages/StoreRegister/StoreRegister";
 import WaitingList from "./pages/WaitingList/WaitingList";
-
+import Calender from './components/WaitingList/Calender';
 
 function App() {
   return (

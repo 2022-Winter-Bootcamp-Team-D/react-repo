@@ -6,7 +6,7 @@ import ListTable from "../../components/WaitingList/ListTable";
 import Logo from "../../components/WaitingList/Logo";
 import SubButton from "../../components/WaitingList/SubButton";
 import TableTitle from "../../components/WaitingList/TableTitle";
-
+import Calender from "../../components/WaitingList/Calender";
 
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
@@ -15,6 +15,7 @@ function WaitingList() {
     <Container style={{display: 'flex', overflow: 'hidden'}}>
       <div>
         <Logo/>
+        <Calender/>
       </div>
       <div>
         <TableTitle/>
