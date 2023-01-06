@@ -71,7 +71,8 @@ export default function Calender() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}> 
-      <StaticDatePicker className='Calender'
+      <StaticDatePicker 
+        className='CalenderStyle'
         displayStaticWrapperAs="desktop"
         label="Week picker"
         value={value}

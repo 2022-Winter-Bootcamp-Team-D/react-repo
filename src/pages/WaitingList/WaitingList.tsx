@@ -7,6 +7,8 @@ import Logo from "../../components/WaitingList/Logo";
 import SubButton from "../../components/WaitingList/SubButton";
 import TableTitle from "../../components/WaitingList/TableTitle";
 import Calender from "../../components/WaitingList/Calender";
+import StoreInformation from "../../components/WaitingList/StoreInformation";
+
 
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
@@ -16,6 +18,9 @@ function WaitingList() {
       <div>
         <Logo/>
         <Calender/>
+        <div className="RoundSquare">
+        <StoreInformation/>
+        </div>
       </div>
       <div>
         <TableTitle/>

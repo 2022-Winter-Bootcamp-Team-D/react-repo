@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-//import './Calender.scss';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,6 +10,7 @@ import {
 // import StoreRegister from "./pages/StoreRegister/StoreRegister";
 import WaitingList from "./pages/WaitingList/WaitingList";
 import Calender from './components/WaitingList/Calender';
+import StoreInformation from "././components/WaitingList/StoreInformation";
 
 function App() {
   return (
