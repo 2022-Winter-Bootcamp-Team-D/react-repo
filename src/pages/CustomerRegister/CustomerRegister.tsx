@@ -5,9 +5,10 @@ import RegisterInput from "../../components/RegisterInput";
 
 function CustomerRegister() {
     document.body.style.backgroundColor = "#FFFBD9";
-    return(<div>
-      <Logo/>
-      <RegisterInput/>
+    return(
+      <div>
+        <Logo/>
+        <RegisterInput/>
       </div>);
   }
 
