@@ -7,6 +7,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  
 } from "react-router-dom";        // 라우터를 사용하기 위한 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <div className="App">
         <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="register" element={<CustomerRegister />} />
+        <Route path="/register" element={<CustomerRegister />} />
         </Routes>
       </div>
     </Router>

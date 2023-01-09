@@ -1,6 +1,9 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 import Logo from "../../components/Logo";
+import {
+    Link
+  } from "react-router-dom"; 
 
 function Login() {
     document.body.style.backgroundColor = "#FFFBD9";
@@ -17,7 +20,9 @@ function Login() {
       </Box>
       <div className="InputStyle">
       <button className="ButtonStyle" >로그인</button>
+      <Link to="/register">
       <button className="ButtonStyle2" >가게등록</button>
+      </Link>
       </div>
       </div>
       );
