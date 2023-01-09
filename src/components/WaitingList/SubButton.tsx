@@ -1,15 +1,20 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 import './WaitingList.scss';
+import {
+  Link
+} from "react-router-dom"; 
 
 function SubButton() {
   
   return (
     <Container>
       <div id = "wrap">
-        <button className='offlineRegisterButton'>
-          NEW
-        </button>
+        <Link to="/customerregister">
+          <button className='offlineRegisterButton'>
+            NEW
+          </button>
+        </Link>
         <div className='offlineRegisterText'>
           현장 등록
         </div>
