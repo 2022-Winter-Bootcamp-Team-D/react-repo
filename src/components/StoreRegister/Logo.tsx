@@ -1,14 +1,14 @@
-import LogoImage from './src/assets/image/LogoImage.png';
-import { Container } from "@material-ui/core";
 import React from "react";
+import LogoImage from '../../assets/image/LogoImage.png'; //이미지 불러오기
+
 
 
 function Logo() {
   return (
-    <Container style={{display: 'flex'}}>
-        <img src={LogoImage} className='LogoImage'/>
-    </Container>
-
+  <div>
+    <img src={LogoImage} className="Logo"/>
+    <div className="LogeImage">Waiter</div>
+  </div>
   );
 }
 

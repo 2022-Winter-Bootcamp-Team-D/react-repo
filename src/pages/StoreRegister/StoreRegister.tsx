@@ -6,7 +6,10 @@ import Logo from "../../components/StoreRegister/Logo";
 
 function CustomerRegister() {
     document.body.style.backgroundColor = "#FFFBD9";
-    return(<div><Logo/></div>);
+    return(
+    <div>
+      <Logo/>
+      </div>);
   }
 
   export default CustomerRegister;  //import를 하기 위해선 export(내보내기)를 해야 한다
