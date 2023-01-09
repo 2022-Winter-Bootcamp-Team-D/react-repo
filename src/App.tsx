@@ -17,7 +17,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/waitinglist" element={<WaitingList />} />
+          <Route path="/" element={<WaitingList />} />
           <Route path="/customerregister" element={<CustomerRegister />} /> 
         </Routes>
       </div>
