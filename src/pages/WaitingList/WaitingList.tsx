@@ -18,9 +18,7 @@ function WaitingList() {
       <div>
         <Logo/>
         <Calender/>
-        <div className="RoundSquare">
         <StoreInformation/>
-        </div>
       </div>
       <div className="VerticalLine"></div>
       <div>

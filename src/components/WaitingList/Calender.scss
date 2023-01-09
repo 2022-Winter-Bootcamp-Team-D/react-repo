@@ -1,11 +1,20 @@
 .CalenderStyle {
-    margin-left: -2em;
-    size: "small";
+    //margin-top: 1em;
+    //margin-left: -1em;
+    background-color: #fffad7;
+    //width: 225.6;
+    //size: small;
+}
+
+.CalenderLocation {
+    margin-top: 0.5em;
+    margin-left: -1em;
+
 }
 
 .VerticalLine {
     margin-top: 3.5em;
-    margin-left: 2em;
-    border-left: 3px solid rgb(254, 243, 188);
-    height: 47em;
+    margin-left: 1em;
+    border-left: 2px solid rgb(254, 243, 188);
+    height: 43em;
 }
