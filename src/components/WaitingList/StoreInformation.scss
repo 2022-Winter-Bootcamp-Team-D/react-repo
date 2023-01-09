@@ -8,10 +8,22 @@
 }
 
 .InformationInput{
+    //margin-top: 1em;
+    //margin-left: 0.6em;    
+    margin: 1em;
+    border-radius: 15px;
+    widtH: 13em;
+    //height: 21em;
+    background-color: #FFF8BA;
+    border:none;
+}
+
+.InformationOutline{
     margin-top: 1em;
     margin-left: -1em;    
     border-radius: 15px;
-    widtH: 310;
+    widtH: 14em;
     //height: 21em;
     background-color: #FFF8BA;
+    border:none;
 }
