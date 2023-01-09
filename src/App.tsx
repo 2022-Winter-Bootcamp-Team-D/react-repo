@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+// import CustomerRegister from "./pages/CustomerRegister/CustomeRegister";
+// import StoreRegister from "./pages/StoreRegister/StoreRegister";
+//import WaitingList from "./pages/WaitingList/WaitingList";
+//import Calender from './components/WaitingList/Calender';
+import StoreRegister from './components/StoreRegister/StoreRegister';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<StoreRegister/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
