@@ -1,5 +1,10 @@
 import React from 'react';
 import './App.css';
+<<<<<<< HEAD
+=======
+import StoreRegister from './pages/StoreRegister/StoreRegister';
+import Login from './pages/StoreRegister/Login';
+>>>>>>> develop
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,8 +22,13 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+<<<<<<< HEAD
           <Route path="/" element={<WaitingList />} />
           <Route path="/customerregister" element={<CustomerRegister />} /> 
+=======
+          <Route path="/" element={<Login />} />
+          <Route path="/storeRegister" element={<StoreRegister />} />
+>>>>>>> develop
         </Routes>
       </div>
     </Router>

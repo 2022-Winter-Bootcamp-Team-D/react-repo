@@ -22,7 +22,7 @@ function Login() {
             </Box>
         <div className="InputStyle">
             <button className="ButtonStyle" >로그인</button>
-            <Link to="/register">
+            <Link to="/storeRegister">
                 <button className="ButtonStyle2" >가게등록</button>
             </Link>
         </div>
