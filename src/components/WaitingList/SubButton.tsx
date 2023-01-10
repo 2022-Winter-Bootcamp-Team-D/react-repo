@@ -10,7 +10,8 @@ function SubButton() {
   return (
     <Container>
       <div id = "wrap">
-        <Link to="/customerregister">
+        <Link to="/customerRegister"
+        style={{ textDecoration: "none" }}>
           <button className='offlineRegisterButton'>
             NEW
           </button>

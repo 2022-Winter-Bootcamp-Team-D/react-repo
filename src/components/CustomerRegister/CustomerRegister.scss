@@ -1,13 +1,17 @@
 .Logo {
     margin-top: 9em;
+    margin-bottom: -4.3em;
     width: 120px;
     height: 120px;
-   object-fit: cover; //요소의 가로나 세로크기에 가능한 맞춰져 크기가 조정, 비율은 고정된 상태. 개체 크기에 맞게 잘리며 가득 채울때까지 확대됩니다.ß
+    object-fit: cover; //요소의 가로나 세로크기에 가능한 맞춰져 크기가 조정, 비율은 고정된 상태. 개체 크기에 맞게 잘리며 가득 채울때까지 확대됩니다.ß
 }
 
 .LogoText {
-    margin-top: -0.7em;
     font-family: "BMDOHYEON";
     font-size: 1.5em;
     font-weight : bolder;
+}
+
+a:visited { 
+    color:black; 
 }

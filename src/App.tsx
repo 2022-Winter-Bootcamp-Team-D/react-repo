@@ -8,10 +8,10 @@ import {
 
 
 // import StoreRegister from "./pages/StoreRegister/StoreRegister";
+
+import Login from './pages/Login/Login';
+import StoreRegister from './pages/StoreRegister/StoreRegister';
 import WaitingList from "./pages/WaitingList/WaitingList";
-import Calender from './components/WaitingList/Calender';
-import StoreInformation from "././components/WaitingList/StoreInformation";
-import Login from './pages/CustomerRegister/Login';
 import CustomerRegister from './pages/CustomerRegister/CustomerRegister';
 
 function App() {
@@ -20,7 +20,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/storeRegister" element={<CustomerRegister />} />
+          <Route path="/storeRegister" element={<StoreRegister />} />
+          <Route path="/waitingList" element={<WaitingList />} />
+          <Route path="/customerRegister" element={<CustomerRegister />} />
         </Routes>
       </div>
     </Router>
