@@ -10,7 +10,7 @@ function SubButton() {
   return (
     <Container>
       <div id = "wrap">
-        <Link to="/customerregister">
+        <Link to="/customerRegister">
           <button className='offlineRegisterButton'>
             NEW
           </button>
