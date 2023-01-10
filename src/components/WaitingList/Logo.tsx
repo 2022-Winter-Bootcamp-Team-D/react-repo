@@ -10,8 +10,9 @@ function SubButton() {
   
   return (
     <div>
-      <Link to='/'>
-        <Container style={{display: 'flex'}}>
+      <Link to='/'
+      className='LinkStyle'>
+        <Container>
             <img src={LogoImage} className='LogoImage'/>
             <div className='LogoText'>
                 Waiter
