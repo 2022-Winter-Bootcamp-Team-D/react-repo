@@ -1,7 +1,7 @@
 import React from "react";
 
-import Logo from "../../components/Logo";
-import RegisterInput from "../../components/RegisterInput";
+import Logo from "../../components/CustomerRegister/Logo";
+import RegisterInput from "../../components/CustomerRegister/RegisterInput";
 
 function CustomerRegister() {
     document.body.style.backgroundColor = "#FFFBD9";
