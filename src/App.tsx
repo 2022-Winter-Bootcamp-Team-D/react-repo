@@ -23,7 +23,6 @@ function App() {
           <Route path="/storeRegister" element={<StoreRegister />} />
           <Route path="/waitingList" element={<WaitingList />} />
           <Route path="/customerRegister" element={<CustomerRegister />} />
-
         </Routes>
       </div>
     </Router>
