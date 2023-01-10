@@ -1,6 +1,6 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
-import Logo from "../../components/Logo";
+import Logo from "../../components/CustomerRegister/Logo";
 import {
     Link
   } from "react-router-dom"; 

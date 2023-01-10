@@ -17,13 +17,12 @@ export default function RegisterInput() {
           noValidate
           autoComplete="off"
         >
-          <TextField id="standard-basic" label="가게명/업소명" variant="standard" />
-          <TextField id="standard-basic" label="가게 번호" variant="standard" />
-          <TextField id="standard-basic" label="가게 주소" variant="standard" />
-          <TextField id="standard-basic" label="비밀번호(4자리)" variant="standard" />
+          <TextField id="standard-basic" label="이름" variant="standard" />
+          <TextField id="standard-basic" label="전화번호" variant="standard" />
+          <TextField id="standard-basic" label="인원수" variant="standard" />
         </Box>
         <Link to="/">
-          <button className="ButtonStyle" >가게등록</button>
+          <button className="ButtonStyle" >웨이팅 등록</button>
         </Link>
     </div>
 
