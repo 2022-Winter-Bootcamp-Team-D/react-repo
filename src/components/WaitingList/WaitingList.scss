@@ -1,0 +1,89 @@
+.tableStyle {
+    margin-Top: 1.5em;
+    margin-Left: 2.2em;
+    width: 75%;
+    height: 500;
+    overflow: 'hidden';
+}
+
+.tableTitle{
+    margin-top: 2em;
+    margin-Left: -2.5em;
+    width: 10em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
+}
+
+.tableTime{
+    margin-top: 1em;
+    margin-Left: 0.5em;
+    width: 27em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    background-color: #FBE5AD;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+}
+
+.offlineRegisterButton{
+    margin-top: 6.2em;
+    margin-left: -5.8em;
+    width: 1em;
+    height: 1em;
+    padding: 2em;
+    color: black;
+    background-color: #A2F187;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: 'left';
+}
+
+.offlineRegisterText{
+    margin-left: -6em;
+    width: 10em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+    float: 'left';
+    text-align: left;
+}
+
+.stopRegisterButton{
+    margin-top: 1.1em;
+    margin-left: -5.8em;
+    width: 1em;
+    height: 1em;
+    padding: 2em;
+    color: black;
+    background-color: #F96F6F;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: 'left';
+}
+
+.stopRegisterText{
+    margin-left: -6em;
+    width: 10em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 1em;
+    float: 'left';
+    text-align: left;
+}

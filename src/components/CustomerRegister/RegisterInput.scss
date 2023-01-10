@@ -1,0 +1,25 @@
+.InputStyle{
+    display: flex;
+    align-items: center;    //세로 정렬
+    flex-Direction: column;  //세로 정렬
+}
+
+.ButtonStyle{
+    width: 19.3em;
+    height: 3.5em;
+    background-color: #ffe600;
+    margin-top: 1.5em;
+    color: black;
+    border-radius: 10px;
+
+}
+
+.ButtonStyle2{
+    width: 19.3em;
+    height: 3.5em;
+    background-color: #ECECEC;
+    margin-top: 1.5em;
+    color: black;
+    border-radius: 10px;
+
+}
