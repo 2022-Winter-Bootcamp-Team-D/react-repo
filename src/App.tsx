@@ -5,12 +5,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
-// import CustomerRegister from "./pages/CustomerRegister/CustomeRegister";
-// import StoreRegister from "./pages/StoreRegister/StoreRegister";
-//import WaitingList from "./pages/WaitingList/WaitingList";
-//import Calender from './components/WaitingList/Calender';
 import StoreRegister from './pages/StoreRegister/StoreRegister';
+
+
 
 function App() {
   return (

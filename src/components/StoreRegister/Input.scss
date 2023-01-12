@@ -1,3 +1,10 @@
 .Input {
+    display: flex;
+    align-items: center; //세로정렬
+    flex-direction: column; //세로정렬
     //text-align: center;
+}
+
+.buttonStyle {
+    
 }
