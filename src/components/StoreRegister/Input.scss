@@ -2,9 +2,15 @@
     display: flex;
     align-items: center; //세로정렬
     flex-direction: column; //세로정렬
+    margin-top: 30px;
     //text-align: center;
 }
 
 .buttonStyle {
-    
+    width: 250px;
+    height: 45px;
+    margin-top: 22px;
+    background-color: #ffe600;
+    color: black;
+    border-radius: 10px;
 }
