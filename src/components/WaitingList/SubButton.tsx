@@ -21,7 +21,7 @@ function SubButton() {
         </div>
         <br/>
         <button className='stopRegisterButton'>
-          STOP
+          CLOSE
         </button>
         <div className='stopRegisterText'>
           대기 마감
