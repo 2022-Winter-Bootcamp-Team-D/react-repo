@@ -7,6 +7,7 @@ import {
 
 function Login() {
     document.body.style.backgroundColor = "#FFFBD9";
+    
     return(
         <div>
             <Box className="InputStyle"
