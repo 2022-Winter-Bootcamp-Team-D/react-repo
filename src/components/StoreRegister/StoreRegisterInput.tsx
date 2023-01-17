@@ -42,7 +42,7 @@ export default function RegisterInput() {
           <TextField onChange={(e)=>{setPosts(Number(e.target.value))}}id="standard-basic" label="가게주소" variant="standard" />
           <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호(4자리)" variant="standard" />
         </Box>
-        <Link to="/">
+        <Link to="/waitingList">
           <button onClick={show} className="ButtonStyle" >가게 등록</button>
         </Link>
     </div>
