@@ -14,7 +14,7 @@ export default function RegisterInput() {
   const [posts, setPosts] = useState(0) //가게 주소
   const [password, setPassword] = useState('')
 
-  const show =()=>{
+  const storeRegister =()=>{
       //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
       axios.post('http://localhost:8000/api/v1/store/signin/',{
         store_name: store_name,
@@ -43,7 +43,7 @@ export default function RegisterInput() {
           <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호(4자리)" variant="standard" />
         </Box>
         <Link to="/waitingList">
-          <button onClick={show} className="ButtonStyle" >가게 등록</button>
+          <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
         </Link>
     </div>
 
