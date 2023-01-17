@@ -11,8 +11,8 @@ function StoreInformation() {
 
   // 400 error - url확인
   const storeinformationText = () => {
-    axios.patch('http://localhost:8000/api/v1/store/detail/',{
-      store_id: 1, //localStorage.getItem("store_id"),
+    axios.patch('http://localhost:8000/api/v1/stores/details/',{
+      store_id: 2, //localStorage.getItem("store_id"),
       information: text
     })
     .then((response) => {
