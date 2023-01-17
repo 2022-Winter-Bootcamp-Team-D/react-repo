@@ -4,24 +4,22 @@ import './StoreInformation.scss';
 import axios from 'axios';
 
 function StoreInformation() {
-  const [text, setText] = useState('')  //resInforamtion : waitingList에서 넘겨준 데이터를 해당 컴포넌트에서 어떻게 부를건지, 받아온 데이터를 어떻게 부를건지
+  const [text, setText] = useState('')
   const onChange = (event: any) => (
     setText(event.target.value)
   );
 
-  // 404 error
+  // 400 error - url확인
   const storeinformationText = () => {
-    axios.patch('http://localhost:8000/api/v1/stores/details/',{
-      store_id: localStorage.getItem("store_id"),
-      inforamtion: text
+    axios.patch('http://localhost:8000/api/v1/store/detail/',{
+      store_id: 1, //localStorage.getItem("store_id"),
+      information: text
     })
     .then((response) => {
-        console.log(response.data);
         console.log(text);
       }) 
     .catch((error) => { 
       console.log('Error!');
-      console.log(text);
     });
   }
 
