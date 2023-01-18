@@ -14,14 +14,14 @@ import axios from "axios";
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
 
-  // const [information, setInformation] = useState('');
-  // const [is_waiting, setIs_waiting] = useState(true);
+  const [information, setInformation] = useState('');
+  const [is_waiting, setIs_waiting] = useState(true);
   // const [waiting, setWaiting] = useState([]);  //props 이용해서 자식 페이지로 ?
 
 
   const [info,setInfo] = useState({
-    information: "adsaf",
-    is_waiting: true,
+    information: information, //asdf에서 수정 : 임의의 값
+    is_waiting: is_waiting, //true에서 수정
     waiting:[
               {
                 waiting_id: 1,
@@ -89,7 +89,3 @@ function WaitingList() {
 }
 
 export default WaitingList;
-
-// function useState(arg0: string): [any, any] {
-//   throw new Error("Function not implemented.");
-// }

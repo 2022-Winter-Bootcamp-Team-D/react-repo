@@ -1,5 +1,5 @@
 import { Box, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../components/CustomerRegister/Logo";
 import {
     Link
@@ -39,7 +39,3 @@ function Login() {
   }
 
   export default Login;
-
-function useState(arg0: string): [any, any] {
-    throw new Error("Function not implemented.");
-}
