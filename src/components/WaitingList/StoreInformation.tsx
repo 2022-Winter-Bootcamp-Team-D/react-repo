@@ -10,7 +10,6 @@ function StoreInformation({information}:{information:string}) {
   );
 
   
-  // 400 error - url확인
   const storeinformationText = () => {
     axios.patch('http://localhost:8000/api/v1/stores/details/',{
       store_id: 2, //localStorage.getItem("store_id"), - 우선 임의의 값으로 지정, 로그인 api완료 후 추후 진행

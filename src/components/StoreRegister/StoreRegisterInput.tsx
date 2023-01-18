@@ -16,7 +16,7 @@ export default function RegisterInput() {
 
   const storeRegister =()=>{
       //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
-      axios.post('http://localhost:8000/api/v1/stores/signin/',{
+      axios.post('http://localhost:8000/api/v1/stores/signup/',{
         store_name: store_name,
         phone_num: phone_num,
         latitude: 0,
