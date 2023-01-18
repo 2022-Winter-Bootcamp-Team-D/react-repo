@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import './StoreInformation.scss';
 import axios from 'axios';
 
-function StoreInformation() {
-  const [text, setText] = useState('')
+function StoreInformation({information}:{information:string}) {
+  const [text, setText] = useState(information)
   const onChange = (event: any) => (
     setText(event.target.value)
   );
 
+  
   // 400 error - url확인
   const storeinformationText = () => {
     axios.patch('http://localhost:8000/api/v1/stores/details/',{
-      store_id: 2, //localStorage.getItem("store_id"),
+      store_id: 2, //localStorage.getItem("store_id"), - 우선 임의의 값으로 지정, 로그인 api완료 후 추후 진행
       information: text
     })
     .then((response) => {

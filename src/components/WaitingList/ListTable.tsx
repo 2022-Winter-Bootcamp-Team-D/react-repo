@@ -12,9 +12,10 @@ import IconButton from '@mui/material/IconButton';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import axios from 'axios';
 
 interface Column {
-  id: 'number' | 'name' | 'people' | 'phoneNumber';
+  id: 'waiting_id' | 'name' | 'people' | 'phone_num';
   label: string;
   minWidth?: number;
   align?: 'center';
@@ -22,7 +23,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: 'number', label: '순번', minWidth: 30 },
+  { id: 'waiting_id', label: '순번', minWidth: 30 },
   { id: 'name', label: '예약자', minWidth: 30 },
   {
     id: 'people',
@@ -31,12 +32,14 @@ const columns: readonly Column[] = [
     align: 'center',
   },
   {
-    id: 'phoneNumber',
+    id: 'phone_num',
     label: '휴대폰 번호',
     minWidth: 30,
     align: 'center',
   },
 ];
+
+
 
 function createData(
     number: number,
@@ -47,33 +50,33 @@ function createData(
     return { number, name, people, phoneNumber};
 }
 
-const rows = [
-    createData(1, '김철수', 2, '010-1234-5678'),
-    createData(2, '김철수', 2, '010-1234-5678'),
-    createData(3, '김철수', 2, '010-1234-5678'),
-    createData(4, '김철수', 2, '010-1234-5678'),
-    createData(5, '김철수', 2, '010-1234-5678'),
-    createData(6, '김철수', 2, '010-1234-5678'),
-    createData(7, '김철수', 2, '010-1234-5678'),
-    createData(8, '김철수', 2, '010-1234-5678'),
-    createData(9, '김철수', 2, '010-1234-5678'),
-    createData(10, '김철수', 2, '010-1234-5678'),
-    createData(11, '김철수', 2, '010-1234-5678'),
-    createData(12, '김철수', 2, '010-1234-5678'),
-    createData(13, '김철수', 2, '010-1234-5678'),
-    createData(14, '김철수', 2, '010-1234-5678'),
-    createData(15, '김철수', 2, '010-1234-5678'),
-    createData(16, '김철수', 2, '010-1234-5678'),
-    createData(17, '김철수', 2, '010-1234-5678'),
-    createData(18, '김철수', 2, '010-1234-5678'),
-    createData(19, '김철수', 2, '010-1234-5678'),
-    createData(20, '김철수', 2, '010-1234-5678'),
-  ];
+// const rows = [
+//     createData(1, '김철수', 2, '010-1234-5678'),
+//     createData(2, '김철수', 2, '010-1234-5678'),
+//     createData(3, '김철수', 2, '010-1234-5678'),
+//     createData(4, '김철수', 2, '010-1234-5678'),
+//     createData(5, '김철수', 2, '010-1234-5678'),
+//     createData(6, '김철수', 2, '010-1234-5678'),
+//     createData(7, '김철수', 2, '010-1234-5678'),
+//     createData(8, '김철수', 2, '010-1234-5678'),
+//     createData(9, '김철수', 2, '010-1234-5678'),
+//     createData(10, '김철수', 2, '010-1234-5678'),
+//     createData(11, '김철수', 2, '010-1234-5678'),
+//     createData(12, '김철수', 2, '010-1234-5678'),
+//     createData(13, '김철수', 2, '010-1234-5678'),
+//     createData(14, '김철수', 2, '010-1234-5678'),
+//     createData(15, '김철수', 2, '010-1234-5678'),
+//     createData(16, '김철수', 2, '010-1234-5678'),
+//     createData(17, '김철수', 2, '010-1234-5678'),
+//     createData(18, '김철수', 2, '010-1234-5678'),
+//     createData(19, '김철수', 2, '010-1234-5678'),
+//     createData(20, '김철수', 2, '010-1234-5678'),
+//   ];
 
-export default function ListTable() {
+export default function ListTable({waiting}:any ) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
-
+    const [rows,setRows] = React.useState(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
     };
@@ -107,11 +110,14 @@ export default function ListTable() {
             
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((row:any) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.number}>
-                    {columns.map((column) => {
+                    {columns.map((column:any) => {
+                      console.log("row",row);
+                      console.log("column",column);
                       const value = row[column.id];
+                     
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'
@@ -121,7 +127,9 @@ export default function ListTable() {
                       );
                     })}
                     <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
-                    <TableCell align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
+                    <TableCell  onClick={()=>{ axios.patch("/api/v1/stores/watings",{
+  store_id: 2,  waiting_id: row.waiting_id
+})}} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
                     <TableCell align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
                 );
