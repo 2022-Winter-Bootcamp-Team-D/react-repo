@@ -8,6 +8,9 @@ import {
 function Login() {
     document.body.style.backgroundColor = "#FFFBD9";
     
+    const [store_name, setStore_name] = useState('')
+    const [password, setPassword] = useState('')
+    
     return(
         <div>
             <Box className="InputStyle"
@@ -18,8 +21,8 @@ function Login() {
             noValidate
             autoComplete="off">
                 <Logo/>
-                <TextField id="standard-basic" label="가게명 / 업소명" variant="standard" />
-                <TextField id="standard-basic" label="비밀번호(4자리)" variant="standard" />
+                    <TextField onChange={(e)=>{setStore_name(e.target.value)}} id="standard-basic" label="가게명 / 업소명" variant="standard" />
+                    <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호(4자리)" variant="standard" />
             </Box>
         <div className="InputStyle">
             <Link to="/WaitingList">
@@ -36,3 +39,7 @@ function Login() {
   }
 
   export default Login;
+
+function useState(arg0: string): [any, any] {
+    throw new Error("Function not implemented.");
+}
