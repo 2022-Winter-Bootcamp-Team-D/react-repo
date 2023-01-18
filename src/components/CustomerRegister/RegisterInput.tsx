@@ -8,6 +8,10 @@ import {
 
 export default function RegisterInput() {
 
+  const [customer_name, setCustomer_name] = useState('')
+  const [phone_num, setPhone_num] = useState('')
+  const [people, setPeople] = useState(0) //초기값이 0이 되어도 괜찮은가여
+
   return (
     <div>
         <Box className="InputStyle"
@@ -18,9 +22,9 @@ export default function RegisterInput() {
           noValidate
           autoComplete="off"
         >
-          <TextField id="standard-basic" label="이름" variant="standard" />
-          <TextField id="standard-basic" label="전화번호" variant="standard" />
-          <TextField id="standard-basic" label="인원수" variant="standard" />
+          <TextField onChange={(e)=>{setCustomer_name(e.target.value)}} id="standard-basic" label="이름" variant="standard" />
+          <TextField onChange={(e) => {setPhone_num(e.target.value)}} id="standard-basic" label="전화번호" variant="standard" />
+          <TextField onChange={(e) => {setPeople(Number(e.target.value))}} id="standard-basic" label="인원수" variant="standard" />
         </Box>
         <Link to="/WaitingList">
           <button className="ButtonStyle" >웨이팅 등록</button>
