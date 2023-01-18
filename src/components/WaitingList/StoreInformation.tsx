@@ -35,7 +35,7 @@ function StoreInformation({information}:{information:string}) {
         value = {text}
         onChange = {onChange}
       />
-      <button onClick={storeinformationText}>저장</button>
+      <button onClick={storeinformationText} className={'InformationSaveButton'} >저장</button>
     </div>
   );
 }

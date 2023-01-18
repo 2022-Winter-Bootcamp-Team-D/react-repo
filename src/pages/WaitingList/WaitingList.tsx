@@ -16,7 +16,7 @@ function WaitingList() {
 
   const [information, setInformation] = useState('');
   const [is_waiting, setIs_waiting] = useState(true);
-  // const [waiting, setWaiting] = useState([]);  //props 이용해서 자식 페이지로 ?
+  const [waiting, setWaiting] = useState([]);  //props 이용해서 자식 페이지로 ?
 
 
   const [info,setInfo] = useState({

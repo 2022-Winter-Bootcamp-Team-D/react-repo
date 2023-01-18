@@ -11,6 +11,10 @@ function Login() {
     const [store_name, setStore_name] = useState('')
     const [password, setPassword] = useState('')
     
+    function Con() {
+        console.log(store_name, password)
+    }
+    
     return(
         <div>
             <Box className="InputStyle"
@@ -26,12 +30,12 @@ function Login() {
             </Box>
         <div className="InputStyle">
             <Link to="/WaitingList">
-            <button className="ButtonStyle" onClick={()=>{
+            <button className="ButtonStyle" onClick={()=>{ Con()
                 //로그인 성공하면 스토어 아이디 받기 -> 받은거 subbtton 여기에 넘겨줘야함.. 그러면 어떻게 넘겨주나? 라우터 훅중에 uselocation() 이거 한번 찾아보쟈!
             }}>로그인</button>
             </Link>
             <Link to="/storeRegister">
-                <button className="ButtonStyle2" >가게등록</button>
+                <button className="ButtonStyle2" >가게 등록</button>
             </Link>
         </div>
       </div>

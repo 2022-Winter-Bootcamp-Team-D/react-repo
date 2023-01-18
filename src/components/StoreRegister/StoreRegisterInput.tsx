@@ -22,7 +22,7 @@ export default function RegisterInput() {
         latitude: 0,
         longitude: 0,
         password: password})
-        .then((res) =>localStorage.setItem("id", res.data.store_id) ) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
+        .then((res) =>localStorage.setItem("store_id", res.data.store_id) ) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
                                                                       // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
   }
   //console.log(localStorage.getItem("id")) 로컬스토리지에서 저장되어있는 값을 꺼내와서 console.log에 출력해서 확인하는 코드(getItem)
