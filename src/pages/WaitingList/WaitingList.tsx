@@ -35,16 +35,21 @@ const test: waitings[] = [
     }
   ]
 
-
-
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
 
   //const [information, setInformation] = useState('');
   const [is_waiting, setIs_waiting] = useState(true);
   const [waiting, setWaiting] = useState([]);  //props 이용해서 자식 페이지로 ?
-  const [temp, setTemp] = useState<res>({information:'',
-is_waiting : true, waiting : {waiting_id : 0, name: '', people:0, phone_num: ''}});
+  const [temp, setTemp] = useState<res>({
+    information:'',
+    is_waiting : true, 
+    waiting : {
+      waiting_id : 0,
+      name: '',
+      people:0,
+      phone_num: ''
+    }});
 
   const customerRegister =()=>{
     //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
