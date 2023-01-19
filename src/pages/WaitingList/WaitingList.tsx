@@ -9,9 +9,9 @@ import StoreInformation from "../../components/WaitingList/StoreInformation";
 import axios from "axios";
 import { useRoutes } from "react-router-dom";
 import waitings from '../../components/WaitingList/Waiting';
+
 //대기자조회api 이 페이지에 연결되어야 함(useEffect) - store_id를 보내고 받아와야 함
 //store_id를 백엔드로 넘겨주면, 백엔드에서 is_waiting, waiting(리스트), information를 받아오기 때문에, 그리고 이 정보를 대기자 입장, 웨이팅 취소 등에서도 계속 사용하기에 useState 사용
-
 
 interface res {
   information: string,
@@ -26,6 +26,7 @@ const test: waitings[] = [
     name: "string",
     waiting_id: 1
     },
+
     {
       people: 2,
       phone_num: "01011111112",

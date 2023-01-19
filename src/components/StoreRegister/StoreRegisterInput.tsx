@@ -7,11 +7,14 @@ import {
 } from "react-router-dom"; 
 import axios from 'axios';
 
+//가게등록
+
 export default function RegisterInput() {
 
   const [store_name, setStore_name] = useState('')
   const [phone_num, setPhone_num] = useState('')
   const [posts, setPosts] = useState(0) //가게 주소
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const storeRegister =()=>{
@@ -21,6 +24,7 @@ export default function RegisterInput() {
         phone_num: phone_num,
         latitude: 0,
         longitude: 0,
+        email : email,
         password: password})
         .then((res) =>localStorage.setItem("store_id", res.data.store_id) ) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
                                                                       // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
@@ -38,9 +42,10 @@ export default function RegisterInput() {
           autoComplete="off"
         >
           <TextField onChange={(e)=>{setStore_name(e.target.value)}} id="standard-basic" label="가게명 / 업소명" variant="standard" />
-          <TextField  onChange={(e)=>{setPhone_num(e.target.value)}}id="standard-basic" label="가게번호" variant="standard" />
-          <TextField onChange={(e)=>{setPosts(Number(e.target.value))}}id="standard-basic" label="가게주소" variant="standard" />
-          <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호(4자리)" variant="standard" />
+          <TextField  onChange={(e)=>{setPhone_num(e.target.value)}}id="standard-basic" label="가게 번호" variant="standard" />
+          <TextField onChange={(e)=>{setPosts(Number(e.target.value))}}id="standard-basic" label="가게 주소" variant="standard" />
+          <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
+          <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
         </Box>
         <Link to="/waitingList">
           <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
