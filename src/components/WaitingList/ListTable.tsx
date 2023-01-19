@@ -13,6 +13,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
+import waitings from './Waiting';
 
 interface Column {
   id: 'waiting_id' | 'name' | 'people' | 'phone_num';
@@ -21,6 +22,13 @@ interface Column {
   align?: 'center';
   format?: (value: number) => string;
 }
+
+// interface waitings {
+//   waiting_id: number,
+//   name: string,
+//   people: number,
+//   phone_num: string
+// }
 
 const columns: readonly Column[] = [
   { id: 'waiting_id', label: '순번', minWidth: 30 },
@@ -40,7 +48,6 @@ const columns: readonly Column[] = [
 ];
 
 
-
 function createData(
     number: number,
     name: string,
@@ -50,35 +57,13 @@ function createData(
     return { number, name, people, phoneNumber};
 }
 
-// const rows = [
-//     createData(1, '김철수', 2, '010-1234-5678'),
-//     createData(2, '김철수', 2, '010-1234-5678'),
-//     createData(3, '김철수', 2, '010-1234-5678'),
-//     createData(4, '김철수', 2, '010-1234-5678'),
-//     createData(5, '김철수', 2, '010-1234-5678'),
-//     createData(6, '김철수', 2, '010-1234-5678'),
-//     createData(7, '김철수', 2, '010-1234-5678'),
-//     createData(8, '김철수', 2, '010-1234-5678'),
-//     createData(9, '김철수', 2, '010-1234-5678'),
-//     createData(10, '김철수', 2, '010-1234-5678'),
-//     createData(11, '김철수', 2, '010-1234-5678'),
-//     createData(12, '김철수', 2, '010-1234-5678'),
-//     createData(13, '김철수', 2, '010-1234-5678'),
-//     createData(14, '김철수', 2, '010-1234-5678'),
-//     createData(15, '김철수', 2, '010-1234-5678'),
-//     createData(16, '김철수', 2, '010-1234-5678'),
-//     createData(17, '김철수', 2, '010-1234-5678'),
-//     createData(18, '김철수', 2, '010-1234-5678'),
-//     createData(19, '김철수', 2, '010-1234-5678'),
-//     createData(20, '김철수', 2, '010-1234-5678'),
-//   ];
 
-export default function ListTable({waiting}:any ) {
+export default function ListTable({waiting}:{waiting:waitings[]}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
-    const [rows,setRows] = React.useState(waiting);
+    const [rows, setRows] = React.useState<Array<waitings>>(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
-        setPage(newPage);
+        setPage(newPage)
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,6 +71,7 @@ export default function ListTable({waiting}:any ) {
         setPage(0);
     };
 
+    
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>
@@ -128,7 +114,7 @@ export default function ListTable({waiting}:any ) {
                     })}
                     <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
                     <TableCell  onClick={()=>{ axios.patch("/api/v1/stores/watings",{
-  store_id: 2,  waiting_id: row.waiting_id
+  store_id: 2, waiting_id: row.waiting_id
 })}} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
                     <TableCell align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
