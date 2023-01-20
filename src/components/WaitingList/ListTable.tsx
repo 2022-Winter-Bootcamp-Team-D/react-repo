@@ -13,7 +13,8 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
-import waitings from './Waiting';
+import {waitings, res} from './Waiting';
+
 import { Console } from 'console';
 
 interface Column {
@@ -71,17 +72,17 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
       axios.patch('http://localhost:8000/api/v1/stores/waitings/',{
         waiting_id: rows[index].waiting_id
       })    
-      .then(function (res){console.log(rows)})
+      .then((res) =>setRows(res.data.waiting))  //55행 이용, res로 넘어온 정보저장 해야대, 그렇기에 setRows가   
       .catch((error) => { 
         console.log('Error!');
       });
     }
     
       const waitingCancel = (index: number) => {
-        axios.patch('http://localhost:8000/api/v1//stores/cancellations/',{
+        axios.patch<res>('http://localhost:8000/api/v1//stores/cancellations/',{
           waiting_id: rows[index].waiting_id
         })
-        .then(function (res){console.log(rows)})
+        .then((res) =>setRows(res.data.waiting))
         .catch((error) => { 
           console.log('Error!');
         });

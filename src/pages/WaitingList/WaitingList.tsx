@@ -8,7 +8,7 @@ import Calender from "../../components/WaitingList/Calender";
 import StoreInformation from "../../components/WaitingList/StoreInformation";
 import axios from "axios";
 import { useRoutes } from "react-router-dom";
-import waitings from '../../components/WaitingList/Waiting';
+import {waitings} from '../../components/WaitingList/Waiting';
 
 //대기자조회api 이 페이지에 연결되어야 함(useEffect) - store_id를 보내고 받아와야 함
 //store_id를 백엔드로 넘겨주면, 백엔드에서 is_waiting, waiting(리스트), information를 받아오기 때문에, 그리고 이 정보를 대기자 입장, 웨이팅 취소 등에서도 계속 사용하기에 useState 사용
@@ -43,6 +43,7 @@ function WaitingList() {
   const [waiting, setWaiting] = useState([]);  //props 이용해서 자식 페이지로 ?
   
 
+
   const [temp, setTemp] = useState<res>({
     information:'',
     is_waiting : true, 
@@ -56,7 +57,7 @@ function WaitingList() {
   const customerRegister =()=>{
     //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
     axios.post<res>('http://localhost:8000/api/v1/stores/waitings/',{
-      store_id: localStorage.getItem('store_id'),
+      //store_id: localStorage.getItem('store_id'),
     })
       .then((res) => setTemp(res.data)) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
                                        // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
@@ -74,7 +75,7 @@ function WaitingList() {
       <div className="VerticalLine"></div>
       <div>
         <TableTitle/>
-        <ListTable waiting={test}/> 
+        <ListTable waiting={test} /> 
         {/*  */}
       </div>
       <SubButton/>

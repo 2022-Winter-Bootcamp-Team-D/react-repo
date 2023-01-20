@@ -25,7 +25,7 @@ export default function RegisterInput() {
     axios.post('http://localhost:8000/api/v1/waitings/',{
       store_id: localStorage.getItem('store_id'),
       people: people,
-      token: '민아'})
+      token: 'token'})
       .then((res) => console.log(res)) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
                                        // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
 }
