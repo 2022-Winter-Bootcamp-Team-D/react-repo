@@ -14,6 +14,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 import waitings from './Waiting';
+import { Console } from 'console';
 
 interface Column {
   id: 'waiting_id' | 'name' | 'people' | 'phone_num';
@@ -48,30 +49,43 @@ const columns: readonly Column[] = [
 ];
 
 
-function createData(
-    number: number,
-    name: string,
-    people: number,
-    phoneNumber: string,
-    ) {
-    return { number, name, people, phoneNumber};
-}
-
-
 export default function ListTable({waiting}:{waiting:waitings[]}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
-    const [rows, setRows] = React.useState<Array<waitings>>(waiting);
+    const [rows, setRows] = React.useState<waitings[]>(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage)
+        console.log(rows)
     };
+    
+    function setrowData() {
+      setRows(rows)
+    }
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
 
+    const Start = (index: number) => {
+      axios.patch('http://localhost:8000/api/v1/stores/waitings/',{
+        waiting_id: rows[index].waiting_id
+      })    
+      .then(function (res){console.log(rows)})
+      .catch((error) => { 
+        console.log('Error!');
+      });
+    }
     
+      const waitingCancel = (index: number) => {
+        axios.patch('http://localhost:8000/api/v1//stores/cancellations/',{
+          waiting_id: rows[index].waiting_id
+        })
+        .then(function (res){console.log(rows)})
+        .catch((error) => { 
+          console.log('Error!');
+        });
+      }
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>
@@ -98,10 +112,9 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row:any) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.number}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.waiting_id}>
                     {columns.map((column:any) => {
-                      console.log("row",row);
-                      console.log("column",column);
+                      console.log(rows)
                       const value = row[column.id];
                      
                       return (
@@ -113,10 +126,8 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
                       );
                     })}
                     <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
-                    <TableCell  onClick={()=>{ axios.patch("/api/v1/stores/watings",{
-  store_id: 2, waiting_id: row.waiting_id
-})}} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
-                    <TableCell align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
+                    <TableCell  onClick={() => Start(row.waiting_id)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
+                    <TableCell onClick={() => waitingCancel(row.waiting_id)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
                 );
               })}

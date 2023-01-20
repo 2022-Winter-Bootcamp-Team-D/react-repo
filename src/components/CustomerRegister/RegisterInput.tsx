@@ -19,7 +19,7 @@ export default function RegisterInput() {
     console.log(token)
   }
 
-  // 500 error!
+  // 
   const customerRegister =()=>{
     //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
     axios.post('http://localhost:8000/api/v1/waitings/',{
