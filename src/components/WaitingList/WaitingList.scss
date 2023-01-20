@@ -1,9 +1,10 @@
 .tableStyle {
     margin-Top: 1.5em;
-    margin-Left: 2.2em;
+    margin-Left: 3em;
     width: 75%;
     height: 500;
     overflow: 'hidden';
+    //font-family: 'BMJUA';
 }
 
 .tableTitle{
@@ -35,7 +36,7 @@
     height: 1em;
     padding: 2em;
     color: black;
-    background-color: #A2F187;
+    background-color: #FFC928;
     font-family: 'BMJUA';
     font-size: 2em;
     border-radius: 2em;
@@ -86,4 +87,13 @@
     border-radius: 1em;
     float: 'left';
     text-align: left;
+}
+
+.closeBg{
+    background-color: #F96F6F;
+}
+.openBg{
+    background-color: rgb(203, 255, 90);
+    //background-color: #b3fd43;
+
 }

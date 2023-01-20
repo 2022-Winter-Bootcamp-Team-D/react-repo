@@ -12,17 +12,28 @@ import IconButton from '@mui/material/IconButton';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import axios from 'axios';
+import {waitings, res} from './Waiting';
+
+import { Console } from 'console';
 
 interface Column {
-  id: 'number' | 'name' | 'people' | 'phoneNumber';
+  id: 'waiting_id' | 'name' | 'people' | 'phone_num';
   label: string;
   minWidth?: number;
   align?: 'center';
   format?: (value: number) => string;
 }
 
+// interface waitings {
+//   waiting_id: number,
+//   name: string,
+//   people: number,
+//   phone_num: string
+// }
+
 const columns: readonly Column[] = [
-  { id: 'number', label: '순번', minWidth: 30 },
+  { id: 'waiting_id', label: '순번', minWidth: 30 },
   { id: 'name', label: '예약자', minWidth: 30 },
   {
     id: 'people',
@@ -31,58 +42,51 @@ const columns: readonly Column[] = [
     align: 'center',
   },
   {
-    id: 'phoneNumber',
+    id: 'phone_num',
     label: '휴대폰 번호',
     minWidth: 30,
     align: 'center',
   },
 ];
 
-function createData(
-    number: number,
-    name: string,
-    people: number,
-    phoneNumber: string,
-    ) {
-    return { number, name, people, phoneNumber};
-}
 
-const rows = [
-    createData(1, '김철수', 2, '010-1234-5678'),
-    createData(2, '김철수', 2, '010-1234-5678'),
-    createData(3, '김철수', 2, '010-1234-5678'),
-    createData(4, '김철수', 2, '010-1234-5678'),
-    createData(5, '김철수', 2, '010-1234-5678'),
-    createData(6, '김철수', 2, '010-1234-5678'),
-    createData(7, '김철수', 2, '010-1234-5678'),
-    createData(8, '김철수', 2, '010-1234-5678'),
-    createData(9, '김철수', 2, '010-1234-5678'),
-    createData(10, '김철수', 2, '010-1234-5678'),
-    createData(11, '김철수', 2, '010-1234-5678'),
-    createData(12, '김철수', 2, '010-1234-5678'),
-    createData(13, '김철수', 2, '010-1234-5678'),
-    createData(14, '김철수', 2, '010-1234-5678'),
-    createData(15, '김철수', 2, '010-1234-5678'),
-    createData(16, '김철수', 2, '010-1234-5678'),
-    createData(17, '김철수', 2, '010-1234-5678'),
-    createData(18, '김철수', 2, '010-1234-5678'),
-    createData(19, '김철수', 2, '010-1234-5678'),
-    createData(20, '김철수', 2, '010-1234-5678'),
-  ];
-
-export default function ListTable() {
+export default function ListTable({waiting}:{waiting:waitings[]}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
-
+    const [rows, setRows] = React.useState<waitings[]>(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
-        setPage(newPage);
+        setPage(newPage)
+        console.log(rows)
     };
+    
+    function setrowData() {
+      setRows(rows)
+    }
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
 
+    const Start = (index: number) => {
+      axios.patch('http://localhost:8000/api/v1/stores/waitings/',{
+        waiting_id: rows[index].waiting_id
+      })    
+      .then((res) =>setRows(res.data.waiting))  //55행 이용, res로 넘어온 정보저장 해야대, 그렇기에 setRows가   
+      .catch((error) => { 
+        console.log('Error!');
+      });
+    }
+    
+      const waitingCancel = (index: number) => {
+        axios.patch<res>('http://localhost:8000/api/v1//stores/cancellations/',{
+          waiting_id: rows[index].waiting_id
+        })
+        .then((res) =>setRows(res.data.waiting))
+        .catch((error) => { 
+          console.log('Error!');
+        });
+      }
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>
@@ -107,11 +111,13 @@ export default function ListTable() {
             
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((row:any) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.number}>
-                    {columns.map((column) => {
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.waiting_id}>
+                    {columns.map((column:any) => {
+                      console.log(rows)
                       const value = row[column.id];
+                     
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'
@@ -121,8 +127,8 @@ export default function ListTable() {
                       );
                     })}
                     <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
-                    <TableCell align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
-                    <TableCell align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
+                    <TableCell  onClick={() => Start(row.waiting_id)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
+                    <TableCell onClick={() => waitingCancel(row.waiting_id)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
                 );
               })}

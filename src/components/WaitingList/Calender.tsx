@@ -13,6 +13,7 @@ export default function BasicDateTimePicker() {
     <div className='CalenderLocation'>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateTimePicker className='CalenderStyle'
+      
         renderInput={(props) => <TextField {...props} />}
         label="현재 날짜 및 시각"
         value={value}
