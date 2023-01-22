@@ -25,13 +25,6 @@ interface Column {
   format?: (value: number) => string;
 }
 
-// interface waitings {
-//   waiting_id: number,
-//   name: string,
-//   people: number,
-//   phone_num: string
-// }
-
 const columns: readonly Column[] = [
   { id: 'waiting_id', label: '순번', minWidth: 30 },
   { id: 'name', label: '예약자', minWidth: 30 },
@@ -48,7 +41,6 @@ const columns: readonly Column[] = [
     align: 'center',
   },
 ];
-
 
 export default function ListTable({waiting}:{waiting:waitings[]}) {
     const [page, setPage] = React.useState(0);

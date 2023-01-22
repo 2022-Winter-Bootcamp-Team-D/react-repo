@@ -44,9 +44,9 @@ export default function RegisterInput() {
           <TextField onChange={(e) => {setPhone_num(e.target.value)}} id="standard-basic" label="전화번호" variant="standard" />
           <TextField onChange={(e) => {setPeople(Number(e.target.value))}} id="standard-basic" label="인원수" variant="standard" />
         </Box>
-        {/* <Link to="/WaitingList"> */}
+        <Link to="/WaitingList">
           <button onClick={customerRegister} className="ButtonStyle" >웨이팅 등록</button>
-        {/* </Link> */}
+        </Link>
     </div>
 
   );
