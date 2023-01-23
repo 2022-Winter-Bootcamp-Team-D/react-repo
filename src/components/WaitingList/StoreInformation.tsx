@@ -4,11 +4,11 @@ import './StoreInformation.scss';
 import axios from 'axios';
 
 interface Props {
-  setInformation: React.Dispatch<React.SetStateAction<string>>;
+  information: string | undefined;
 }
-type Info = {text : string}
+//type Info = {text : string}
 
-function StoreInformation(information: any) {
+function StoreInformation(information: Props) {
   //const [text, setText] = useState<string>({setInformation})
   const onChange = (event: any) => (
     setInfo(event.target.value)
@@ -35,7 +35,7 @@ function StoreInformation(information: any) {
         aria-label="매장 소개 정보"
         placeholder="매장 소개글을 입력해주세요."
         className='InformationInput'
-        value = {info}
+        //value = {info}   //value 주석 해제하면 오류 발생해요!
         onChange = {onChange}
       />
       <button onClick={storeInformationText} className={'InformationSaveButton'} >저장</button>

@@ -28,27 +28,36 @@ const test: waitings[] = [
       phone_num: "01011111112",
       name: "string2",
       waiting_id: 2
+    },
+
+    {
+      people: 3,
+      phone_num: "0101231112",
+      name: "string3",
+      waiting_id: 3
     }
+
   ]
 
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
 
+
   const [temp, setTemp] = useState<res>({
-    information:'',
+    information: '',
     is_waiting : true, 
     waiting : [{
       waiting_id : 0,
-      name: '',
-      people:0,
-      phone_num: ''
+      name: '민아',
+      people: 4,
+      phone_num: '010-0000-0000'
     }]});
-
 
   useEffect(()=>{
     const res =  axios.post<res>('http://localhost:8000/api/v1/stores/waitings/', {temp})
     .then(res => setTemp(res.data))
   })
+
     // const customerRegister =()=>{ 
     // //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
     // axios.post<res>('http://localhost:8000/api/v1/stores/waitings/',{
@@ -71,7 +80,7 @@ function WaitingList() {
         <TableTitle/>
         <ListTableStyle/>
         {/* ListTable에 test 말고 백엔드에서 받아올 정보 넘겨줘야함 */}
-        <ListTable waiting={test} />
+        <ListTable waiting={temp.waiting} />
       </div>
       <SubButton/>
     </Container>
