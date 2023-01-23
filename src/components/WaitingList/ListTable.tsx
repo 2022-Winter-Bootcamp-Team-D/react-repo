@@ -59,7 +59,8 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-
+    
+    //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
       axios.patch('http://localhost:8000/api/v1/stores/waitings/',{
         waiting_id: rows[index].waiting_id
@@ -70,6 +71,7 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
       });
     }
     
+    //대기목록 MUI 안에 있는 대기취소 버튼
       const waitingCancel = (index: number) => {
         axios.patch<res>('http://localhost:8000/api/v1//stores/cancellations/',{
           waiting_id: rows[index].waiting_id
@@ -79,6 +81,7 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
           console.log('Error!');
         });
       }
+      
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>

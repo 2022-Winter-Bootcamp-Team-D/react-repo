@@ -14,7 +14,7 @@ function StoreInformation(information: any) {
     setInfo(event.target.value)
   );
 
-  const [info, setInfo] = useState('information');
+  const [info, setInfo] = useState(information);  //useState('information'); 이렇게 작성되면 텍스트 information만 작성되던데 이게 맞는지!
 
   const storeInformationText = () => {
     axios.patch('http://localhost:8000/api/v1/stores/details/',{
