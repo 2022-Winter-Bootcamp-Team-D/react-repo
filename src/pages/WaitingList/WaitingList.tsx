@@ -15,29 +15,29 @@ import ListTableStyle from "../../components/WaitingList/ListTableStyle";
 //store_id를 백엔드로 넘겨주면, 백엔드에서 is_waiting, waiting(리스트), information를 받아오기 때문에, 그리고 이 정보를 대기자 입장, 웨이팅 취소 등에서도 계속 사용하기에 useState 사용
 
 //props 전달을 상위에서 하위로 가야해염
-const test: waitings[] = [
-  {
-    people: 3,
-    phone_num: "01011111111",
-    name: "string",
-    waiting_id: 1
-    },
+// const test: waitings[] = [
+//   {
+//     people: 3,
+//     phone_num: "01011111111",
+//     name: "string",
+//     waiting_id: 1
+//     },
 
-    {
-      people: 2,
-      phone_num: "01011111112",
-      name: "string2",
-      waiting_id: 2
-    },
+//     {
+//       people: 2,
+//       phone_num: "01011111112",
+//       name: "string2",
+//       waiting_id: 2
+//     },
 
-    {
-      people: 3,
-      phone_num: "0101231112",
-      name: "string3",
-      waiting_id: 3
-    }
+//     {
+//       people: 3,
+//       phone_num: "0101231112",
+//       name: "string3",
+//       waiting_id: 3
+//     }
 
-  ]
+//   ]
 
 function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";

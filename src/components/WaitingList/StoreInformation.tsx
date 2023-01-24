@@ -35,7 +35,7 @@ function StoreInformation(information: Props) {
         aria-label="매장 소개 정보"
         placeholder="매장 소개글을 입력해주세요."
         className='InformationInput'
-        //value = {info}   //value 주석 해제하면 오류 발생해요!
+        value = {info.information} 
         onChange = {onChange}
       />
       <button onClick={storeInformationText} className={'InformationSaveButton'} >저장</button>
