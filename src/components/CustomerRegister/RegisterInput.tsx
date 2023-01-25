@@ -20,15 +20,15 @@ export default function RegisterInput() {
   }
 
   // 
-  const customerRegister =()=>{
-    //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
-    axios.post('http://localhost:8000/api/v1/waitings/',{
-      store_id: localStorage.getItem('store_id'),
-      people: people,
-      token: 'token'})
-      .then((res) => console.log(res)) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
-                                       // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
-}
+//   const customerRegister =()=>{
+//     //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
+//     axios.post('http://localhost:8000/api/v1/waitings/',{
+//       store_id: localStorage.getItem('store_id'),
+//       people: people,
+//       token: 'token'})
+//       .then((res) => console.log(res)) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
+//                                        // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
+// }
 
   return (
     <div>
@@ -45,7 +45,9 @@ export default function RegisterInput() {
           <TextField onChange={(e) => {setPeople(Number(e.target.value))}} id="standard-basic" label="인원수" variant="standard" />
         </Box>
         <Link to="/WaitingList">
-          <button onClick={customerRegister} className="ButtonStyle" >웨이팅 등록</button>
+          {/* <button onClick={customerRegister} className="ButtonStyle" >웨이팅 등록</button> */}
+          <button className="ButtonStyle" >웨이팅 등록</button>
+
         </Link>
     </div>
 
