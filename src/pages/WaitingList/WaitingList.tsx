@@ -43,7 +43,7 @@ function WaitingList() {
   document.body.style.backgroundColor = "#FFFBD9";
 
 
-  const [temp, setTemp] = useState<res>({
+  const [temp, setTemp] = useState<res>({  // 지정을 해줬더라도 덮어지기 때문에 이대로 진행해도 괜찮다!
     information: '',
     is_waiting : true, 
     waiting : [{
@@ -54,7 +54,7 @@ function WaitingList() {
     }]});
 
   useEffect(()=>{
-    const res =  axios.post<res>('http://localhost:8000/api/v1/stores/waitings/', {temp})
+    const res =  axios.get<res>('http://localhost:8000/api/v1/stores/waitings/')
     .then(res => setTemp(res.data))
   })
 
