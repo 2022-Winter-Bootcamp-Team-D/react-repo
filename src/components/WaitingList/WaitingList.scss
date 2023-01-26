@@ -17,15 +17,6 @@
     border-radius: 1em;
 }
 
-.tableTitle{
-    margin-top: 2em;
-    margin-Left: -2.5em;
-    width: 10em;
-    color: black;
-    font-family: 'BMJUA';
-    font-size: 2em;
-}
-
 .tableTime{
     margin-top: 1em;
     margin-Left: 0.5em;
@@ -36,7 +27,16 @@
     background-color: #FBE5AD;
     font-family: 'BMJUA';
     font-size: 2em;
-    border-radius: 1em;
+    border-radius: 0.6em;
+}
+
+.tableTitle{
+    margin-top: 2em;
+    margin-Left: -2.5em;
+    width: 10em;
+    color: black;
+    font-family: 'BMJUA';
+    font-size: 2em;
 }
 
 .offlineRegisterButton{
