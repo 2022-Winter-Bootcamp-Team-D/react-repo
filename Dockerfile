@@ -16,12 +16,14 @@ COPY . /frontend
 # ENV REACT_APP_BACKEND_URL $REACT_APP_BACKEND_URL
 #ENV : react사용을 할 때 환경변수와 관련된 설정
 
-RUN npm install
-# RUN yarn --ignore-platform
+# RUN npm install
+RUN yarn --ignore-platform
 COPY . ./
 
 # EXPOSE 3000
 
 # build file을 개발용에서는 불러오지 않기 때문에 개발용에서는 npm start 가능
 # RUN yarn run build
-CMD ["npm", "start"]
+RUN yarn
+CMD ["yarn", "dev"]
+# CMD ["npm", "start"]
