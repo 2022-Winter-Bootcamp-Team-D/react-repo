@@ -12,10 +12,12 @@
     //margin-left: 0.6em;    
     margin: 1em;
     border-radius: 15px;
-    widtH: 13em;
+    widtH: 12em;
     //height: 21em;
     background-color: #FFF8BA;
     border:none;
+    font-family: 'BMJUA';
+    font-size:medium
 }
 
 .InformationOutline{
@@ -23,7 +25,19 @@
     margin-left: -1em;    
     border-radius: 15px;
     widtH: 14em;
-    //height: 21em;
+    height: 32em;
     background-color: #FFF8BA;
     border:none;
+}
+
+.InformationSaveButton{
+    font-family: 'BMJUA';
+    //margin-left: 12em;
+    margin-top: 0em;
+    width: 5em;
+    height: 2.2em;
+    border-radius: 10px;
+    border-color: #FFC928;   
+    background-color: #ffe45c;
+
 }

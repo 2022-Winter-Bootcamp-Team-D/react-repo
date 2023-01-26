@@ -1,9 +1,33 @@
 .tableStyle {
-    margin-Top: 1.5em;
-    margin-Left: 2.2em;
+    margin-Top: -35em;
+    margin-Left: 3.5em;
     width: 75%;
     height: 500;
     overflow: 'hidden';
+    //font-family: 'BMJUA';
+}
+
+.tableOutline {
+    margin-top: 1em;
+    margin-Left: 2.5em;
+    width: 60em;
+    height: 35em;
+    padding: 0.5em;
+    background-color: #FBE5AD;
+    border-radius: 1em;
+}
+
+.tableTime{
+    margin-top: 1em;
+    margin-Left: 0.5em;
+    width: 29.5em;
+    height: 1em;
+    padding: 0.5em;
+    color: black;
+    background-color: #FBE5AD;
+    font-family: 'BMJUA';
+    font-size: 2em;
+    border-radius: 0.6em;
 }
 
 .tableTitle{
@@ -15,27 +39,14 @@
     font-size: 2em;
 }
 
-.tableTime{
-    margin-top: 1em;
-    margin-Left: 0.5em;
-    width: 27em;
-    height: 1em;
-    padding: 0.5em;
-    color: black;
-    background-color: #FBE5AD;
-    font-family: 'BMJUA';
-    font-size: 2em;
-    border-radius: 1em;
-}
-
 .offlineRegisterButton{
     margin-top: 6.2em;
-    margin-left: -5.8em;
+    margin-left: -6.3em;
     width: 1em;
     height: 1em;
     padding: 2em;
     color: black;
-    background-color: #A2F187;
+    background-color: #FFC928;
     font-family: 'BMJUA';
     font-size: 2em;
     border-radius: 2em;
@@ -46,7 +57,7 @@
 }
 
 .offlineRegisterText{
-    margin-left: -6em;
+    margin-left: -6.5em;
     width: 10em;
     height: 1em;
     padding: 0.5em;
@@ -60,7 +71,7 @@
 
 .stopRegisterButton{
     margin-top: 1.1em;
-    margin-left: -5.8em;
+    margin-left: -6.3em;
     width: 1em;
     height: 1em;
     padding: 2em;
@@ -76,7 +87,7 @@
 }
 
 .stopRegisterText{
-    margin-left: -6em;
+    margin-left: -6.5em;
     width: 10em;
     height: 1em;
     padding: 0.5em;
@@ -86,4 +97,13 @@
     border-radius: 1em;
     float: 'left';
     text-align: left;
+}
+
+.closeBg{
+    background-color: #F96F6F;
+}
+.openBg{
+    background-color: rgb(203, 255, 90);
+    //background-color: #b3fd43;
+
 }
