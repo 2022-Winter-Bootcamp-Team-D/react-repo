@@ -5,6 +5,7 @@ import {
     Link, useNavigate
   } from "react-router-dom"; 
 import axios from "axios";
+import { access } from "fs";
 
 // 로그인, response body - access, refresh
 
@@ -18,11 +19,17 @@ function Login() {
 
     const storeLogin =()=>{
         //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
-        axios.post('http://localhost:8000/api/v1/stores/login/',{
+        axios.post('http://15.164.28.246:8000/api/v1/stores/login/',{
             email: email,
             password: password})
-          .then((res) =>localStorage.setItem("token", res.data.token)) // (setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드, res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
-          navigate("/WaitingList") // .then에 넣어야 할듯..!
+          .then((response) => {
+            var str1 = 'Bearer '
+            var token = str1.concat(response.data.access)
+            localStorage.setItem('accessToken', token);
+            console.log('[access]' + token)
+            navigate("/WaitingList")
+        }) // (setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드, res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
+           // .then에 넣어야 할듯..!
     }
 
     return(

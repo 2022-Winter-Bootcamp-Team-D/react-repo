@@ -54,8 +54,13 @@ function WaitingList() {
     }]});
 
   useEffect(()=>{
-    const res =  axios.get<res>('http://localhost:8000/api/v1/stores/waitings/')
-    .then(res => setTemp(res.data))
+    const res =  axios.get<res>('http://15.164.28.246:8000/api/v1/stores/waitings/',
+    {
+      headers : {Authorization: localStorage.getItem('accessToken')}
+    })
+    .then((response) => {
+      console.log('[아무]' + localStorage.getItem('accessToken'))
+    })
   })
 
     // const customerRegister =()=>{ 
