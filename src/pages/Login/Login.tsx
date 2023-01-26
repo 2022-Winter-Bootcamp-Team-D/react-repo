@@ -28,8 +28,7 @@ function Login() {
             localStorage.setItem('accessToken', token);
             console.log('[access]' + token)
             navigate("/WaitingList")
-        }) // (setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드, res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
-           // .then에 넣어야 할듯..!
+        }) 
     }
 
     return(

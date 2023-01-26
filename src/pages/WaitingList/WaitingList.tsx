@@ -59,18 +59,9 @@ function WaitingList() {
       headers : {Authorization: localStorage.getItem('accessToken')}
     })
     .then((response) => {
-      console.log('[아무]' + localStorage.getItem('accessToken'))
+      console.log('[대기자조회목록]' + localStorage.getItem('accessToken'))
     })
   })
-
-    // const customerRegister =()=>{ 
-    // //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
-    // axios.post<res>('http://localhost:8000/api/v1/stores/waitings/',{
-    //   //store_id: localStorage.getItem('store_id'),
-    // })
-    //   .then((res) => setTemp(res.data)) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
-                                       // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
-
 
   return (
     <Container style={{display: 'flex', overflow: 'hidden'}}>
