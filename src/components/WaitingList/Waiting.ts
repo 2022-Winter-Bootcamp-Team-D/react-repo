@@ -8,5 +8,5 @@ export interface waitings {
   export interface res { 
     information: string,
     is_waiting: boolean,
-    waiting : waitings[]
+    data : waitings[]
   }

@@ -10,12 +10,19 @@ function SubButton() {
   
   const [is_waiting, setIs_waiting] = useState(true);  // 로그인 하고 받은 스토어 아이디 가지고 조회해서 이즈웨이팅 값 넣기
   const iswaitingChange = () => {
-    axios.patch('http://localhost:8000/api/v1/stores/breaktimes/',{
-     //store_id: 2 //localStorage.getItem("store_id") //회원가입(가게등록)을 해서 store_id가 생성이 돼야 localStorage에 저장이 되고,
-                                                    //이후 getItem을 통해 store_id를 가져올 수 있는데, 아직 그 과정이 선행되지 않아 임의로 2로 지정해주어 확인 작업함
+    axios.patch('http://15.164.28.246:8000/api/v1/stores/breaktimes/',{
+    }, 
+    {
+      headers : {Authorization: localStorage.getItem('accessToken')}
+    }
+    )
+    .then((response) => {
+      console.log('[대기마감]' + localStorage.getItem('accessToken'))
+      console.log(response.data);
+      setIs_waiting(response.data.is_waiting);
+      console.log(is_waiting);
+      
     })
-    .then(res => setIs_waiting(is_waiting)  
-    )  
   }
 
   return (

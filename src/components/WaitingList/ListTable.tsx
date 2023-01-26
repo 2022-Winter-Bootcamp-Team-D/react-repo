@@ -14,6 +14,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 import {waitings, res} from './Waiting';
+import {useEffect,useState} from "react";
 
 import { Console } from 'console';
 
@@ -42,18 +43,22 @@ const columns: readonly Column[] = [
   },
 ];
 
-export default function ListTable({waiting}:{waiting:waitings[]}) {
+export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
+    let abc: number;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
-    const [rows, setRows] = React.useState<waitings[]>(waiting);
+    //const [rows, setRows] = React.useState<waitings[]|undefined>(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage)
-        console.log(rows)
+        console.log(waiting)
     };
     
-    function setrowData() {
-      setRows(rows)
-    }
+    
+
+    useEffect(()=>{
+      console.log(waiting);
+    }, [])
+
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(+event.target.value);
@@ -62,25 +67,39 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
     
     //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
-      axios.patch('http://localhost:8000/api/v1/stores/waitings/',{
-        waiting_id: rows[index].waiting_id
-      })    
-      .then((res) =>setRows(res.data.waiting))  //55행 이용, res로 넘어온 정보저장 해야대, 그렇기에 setRows가   
-      .catch((error) => { 
-        console.log('Error!');
-      });
+      if(waiting != undefined)
+        axios.patch('http://15.164.28.246:8000/api/v1/stores/waitings/',{
+          waiting_id: waiting[index].waiting_id
+        },
+        {
+          headers : {Authorization: localStorage.getItem('accessToken')}
+        }
+        )
+        .then((response) => {
+          console.log('[입장완료]' + localStorage.getItem('accessToken'))
+        })  //55행 이용, res로 넘어온 정보저장 해야대, 그렇기에 setRows가   
+        .catch((error) => { 
+          console.log('Error!');
+        });
     }
     
     //대기목록 MUI 안에 있는 대기취소 버튼
       const waitingCancel = (index: number) => {
-        axios.patch<res>('http://localhost:8000/api/v1//stores/cancellations/',{
-          waiting_id: rows[index].waiting_id
-        })
-        .then((res) =>setRows(res.data.waiting))
-        .catch((error) => { 
-          console.log('Error!');
-        });
-      }
+        if(waiting != undefined)
+          axios.patch<res>('http://15.164.28.246:8000/api/v1//stores/cancellations/',{
+            waiting_id: waiting[index].waiting_id
+          },
+          {
+            headers : {Authorization: localStorage.getItem('accessToken')}
+          }
+          )
+          .then((response) => {
+            console.log('[대기강제취소]' + localStorage.getItem('accessToken'))
+          })
+          .catch((error) => { 
+            console.log('Error!');
+          });
+        }
       
   return (
     <Paper className='tableStyle'>
@@ -104,13 +123,15 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
           </TableHead>
           <TableBody>
             
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            {waiting?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row:any) => {
+                if(waiting != undefined) {
+                   abc = waiting.length
+                }
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.waiting_id}>
                     {columns.map((column:any) => {
-                      console.log(rows)
+                      console.log(waiting)
                       const value = row[column.id];
                      
                       return (
@@ -134,7 +155,7 @@ export default function ListTable({waiting}:{waiting:waitings[]}) {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={rows.length}
+        count= {waiting?.length as number}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
