@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import './StoreRegisterInput.scss';
 import {
-  Link
+  Link, useNavigate
 } from "react-router-dom"; 
 import axios from 'axios';
 
