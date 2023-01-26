@@ -17,6 +17,8 @@ export default function RegisterInput() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const navigate = useNavigate();
+
   const storeRegister =()=>{
       //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
       axios.post('http://localhost:8000/api/v1/stores/signin/',{
@@ -26,8 +28,8 @@ export default function RegisterInput() {
         longitude: 0,
         email : email,
         password: password})
-        .then((res) =>localStorage.setItem("token", res.data.token) ) //(setItem) 로컬스토리지에 res.data.store_id를 "id"로 저장하는 코드,
-                                                            // res는 사용자 마음대로 정의, res.data.store_id는 백엔드에서 받아온 response body
+        .then((res) =>localStorage.setItem("token", res.data.token) )
+        navigate("/WaitingList") // .then에 넣어야 할듯..!
   }
   //console.log(localStorage.getItem("id")) 로컬스토리지에서 저장되어있는 값을 꺼내와서 console.log에 출력해서 확인하는 코드(getItem)
 
@@ -47,9 +49,7 @@ export default function RegisterInput() {
           <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
           <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
         </Box>
-        <Link to="/waitingList">
-          <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
-        </Link>
+        <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
     </div>
 
   );
