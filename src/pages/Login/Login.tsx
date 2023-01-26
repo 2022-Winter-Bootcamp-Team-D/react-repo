@@ -13,10 +13,6 @@ function Login() {
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
-    function Con() {
-        console.log(email, password)
-    }
 
     const storeLogin =()=>{
         //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
@@ -42,10 +38,10 @@ function Login() {
             </Box>
         <div className="InputStyle">
             <Link to="/WaitingList">
-            <button className="ButtonStyle" onClick={()=>{ Con()}}>로그인</button>
+            <button className="ButtonStyle" onClick={storeLogin} >로그인</button>
             </Link>
             <Link to="/storeRegister">
-                <button onClick={storeLogin} className="ButtonStyle2" >가게 등록</button>
+                <button className="ButtonStyle2" >가게 등록</button>
             </Link>
         </div>
       </div>
