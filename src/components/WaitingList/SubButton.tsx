@@ -28,7 +28,7 @@ function SubButton() {
   return (
     <Container>
       <div id = "wrap">
-        <Link to="/customerRegister"
+        {/* <Link to="/customerRegister"
         style={{ textDecoration: "none" }}>
           <button className='offlineRegisterButton'>
             NEW
@@ -36,14 +36,14 @@ function SubButton() {
         </Link>
         <div className='offlineRegisterText'>
           현장 등록
-        </div>
+        </div> */}
         <br/>
         <button onClick={iswaitingChange} className={`stopRegisterButton ${is_waiting ? 'closeBg' : 'openBg'}`} >
           {is_waiting ? 'CLOSE' : 'OPEN'} 
         </button>
-        <div className=' stopRegisterText'>
+        {/* <div className=' stopRegisterText'>
         {is_waiting ? '대기 마감' : '대기 시작'} 
-        </div>
+        </div> */}
       </div>
     </Container>
   );

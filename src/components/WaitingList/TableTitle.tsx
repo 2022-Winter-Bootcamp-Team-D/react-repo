@@ -7,13 +7,12 @@ function TableTitle() {
   return (
     <Container>
       <div id = "wrap">
-        {/* <div className='tableTitle'>
-          대기 목록
-        </div> */}
         <br/>
-        <div className='tableTime'>
+        {/* <div className='tableTitleLineTop'></div> */}
+        <div className='tableTitle'>
           대기 목록
         </div>
+        {/* <div className='tableTitleLineBottom'></div> */}
       </div>
     </Container>
   );

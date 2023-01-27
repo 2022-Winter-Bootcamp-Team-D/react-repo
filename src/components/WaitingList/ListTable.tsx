@@ -46,7 +46,7 @@ const columns: readonly Column[] = [
 export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
     let abc: number;
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(100);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
     //const [rows, setRows] = React.useState<waitings[]|undefined>(waiting);
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage)
