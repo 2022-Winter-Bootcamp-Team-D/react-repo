@@ -75,7 +75,7 @@ export default function RegisterInput() {
           <TextField  onChange={(e)=>{setPhone_num(e.target.value)}}id="standard-basic" label="가게 번호" variant="standard" />
           <TextField onChange={(e)=>{setPosts((e.target.value))}}id="standard-basic" label="가게 주소" variant="standard" />
           <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
-          <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
+          <TextField type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
         </Box>
         
         <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>

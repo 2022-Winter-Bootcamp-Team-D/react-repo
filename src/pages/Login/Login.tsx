@@ -42,7 +42,7 @@ function Login() {
             autoComplete="off">
                 <Logo/>
                     <TextField onChange={(e)=>{setEmail(e.target.value)}} id="standard-basic" label="이메일 주소" variant="standard" />
-                    <TextField onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
+                    <TextField type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
             </Box>
         <div className="InputStyle">  
         <button className="ButtonStyle" onClick={storeLogin} >로그인</button>    
