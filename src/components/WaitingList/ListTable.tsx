@@ -17,6 +17,7 @@ import {waitings, res} from './Waiting';
 import {useEffect,useState} from "react";
 
 import { Console } from 'console';
+import { tokenToString } from 'typescript';
 
 interface Column {
   id: 'waiting_id' | 'name' | 'people' | 'phone_num';
@@ -65,6 +66,21 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
         setPage(0);
     };
     
+    //대기목록 MUI 안에 있는 호출 버튼
+  //   const Call =()=>{
+  //     axios.post('http://15.164.28.246:8000/api/v1/stores/notifications/',{
+  //         token : 'token'
+  //   })
+  //       .then((response) => {
+  //         localStorage.getItem('store_id')
+  //         //" "
+  //         localStorage.getItem('chapter_id')
+  //     }) 
+  //       .catch((error) => { 
+  //         console.log('호출 실패');
+  //       });
+  // }
+
     //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
       if(waiting != undefined)
@@ -77,7 +93,7 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
         )
         .then((response) => {
           console.log('[입장완료]' + localStorage.getItem('accessToken'))
-        })  //55행 이용, res로 넘어온 정보저장 해야대, 그렇기에 setRows가   
+        }) 
         .catch((error) => { 
           console.log('Error!');
         });
