@@ -17,7 +17,7 @@ function SubButton() {
     }
     )
     .then((response) => {
-      console.log('[대기마감]' + localStorage.getItem('accessToken'))
+      localStorage.getItem('accessToken')
       console.log(response.data);
       setIs_waiting(response.data.is_waiting);
       console.log(is_waiting);

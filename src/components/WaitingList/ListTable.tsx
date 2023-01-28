@@ -28,8 +28,8 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: 'waiting_id', label: '순번', minWidth: 30 },
-  { id: 'name', label: '예약자', minWidth: 30 },
+  { id: 'waiting_id', label: '순번', minWidth: 30, align: 'center', },
+  { id: 'name', label: '예약자', minWidth: 30, align: 'center' },
   {
     id: 'people',
     label: '인원 수',
@@ -54,36 +54,28 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
         console.log(waiting)
     };
     
-    
-
-    useEffect(()=>{
-      console.log(waiting);
-    }, [])
-
-
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-    
+
     //대기목록 MUI 안에 있는 호출 버튼
-  //   const Call =()=>{
-  //     axios.post('http://15.164.28.246:8000/api/v1/stores/notifications/',{
-  //         token : 'token'
-  //   })
-  //       .then((response) => {
-  //         localStorage.getItem('store_id')
-  //         //" "
-  //         localStorage.getItem('chapter_id')
-  //     }) 
-  //       .catch((error) => { 
-  //         console.log('호출 실패');
-  //       });
-  // }
+    const Call =()=>{
+      axios.post('http://15.164.28.246:8000/api/v1/stores/notifications/',{
+          token : localStorage.getItem('accessToken')  
+    })
+        .then((response) => {
+          console.log(response.data)
+      }) 
+        .catch((error) => { 
+          console.log('호출 실패');
+        });
+  }
 
     //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
-      if(waiting != undefined)
+      if(waiting !== undefined) {
+      console.log(waiting[index].waiting_id);
         axios.patch('http://15.164.28.246:8000/api/v1/stores/waitings/',{
           waiting_id: waiting[index].waiting_id
         },
@@ -97,13 +89,15 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
         .catch((error) => { 
           console.log('Error!');
         });
-    }
+    }}
     
     //대기목록 MUI 안에 있는 대기취소 버튼
       const waitingCancel = (index: number) => {
-        if(waiting != undefined)
-          axios.patch<res>('http://15.164.28.246:8000/api/v1//stores/cancellations/',{
-            waiting_id: waiting[index].waiting_id
+        if(waiting != undefined) {
+          //console.log(index);  //배열(?) 확인용
+          //console.log(waiting[index].waiting_id);
+          axios.patch<res>('http://15.164.28.246:8000/api/v1/stores/cancellations/',{
+            waiting_id: waiting[index].waiting_id   
           },
           {
             headers : {Authorization: localStorage.getItem('accessToken')}
@@ -115,7 +109,7 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
           .catch((error) => { 
             console.log('Error!');
           });
-        }
+        }}
       
   return (
     <Paper className='tableStyle'>
@@ -140,7 +134,7 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
           <TableBody>
             
             {waiting?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row:any) => {
+              .map((row:any, index:number) => {
                 if(waiting != undefined) {
                    abc = waiting.length
                 }
@@ -158,9 +152,10 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
                         </TableCell>
                       );
                     })}
-                    <TableCell align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
-                    <TableCell  onClick={() => Start(row.waiting_id)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
-                    <TableCell onClick={() => waitingCancel(row.waiting_id)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
+                    <TableCell onClick={() => Call()} align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
+                    {/* waiting_id 대신 index를 넣어줘야 waiting_id가 6, 7 일 때 배열 값과 달라서 발생하는 에러를 해결할 수 있음 */}
+                    <TableCell  onClick={() => Start(index)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
+                    <TableCell onClick={() => waitingCancel(index)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
                 );
               })}
@@ -180,3 +175,14 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
     </Paper>
   );
 }
+// 파일에서 command+shift+f로 검색
+// TablePagination의 count가 undefined,count에서 waiting을 못 읽었어!,
+// 왜냐면 useEffect가 실행되기 전 컴포넌트(waiting={temp?.data})가 먼저 실행됐기 때문에 undefined 상태,
+// undefined상태에서 waiting을 slice 등을 해주라고 하니까 오류가 발생한 거야
+// 오류를 해결하기 위해서 undefined일 때 waiting을 빈 배열로 만들어 줘서 초기값을 만들어준겨
+
+ListTable.defaultProps = {
+ waiting:[]
+}
+
+//
