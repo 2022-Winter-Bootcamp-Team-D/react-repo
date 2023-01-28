@@ -23,11 +23,12 @@ export default function RegisterInput() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
-  const [location, setLocation] = useState(0);
   const [latitude, setlatitude] = useState(0);
+  const [longitude, setLogitude] = useState(0);
+  
 
   const storeSearch =()=>{
-    axios.get(`map-geocode/v2/geocode?query=장미로 101`,
+    axios.get(`map-geocode/v2/geocode?query=${posts}`,
     {
       headers: {
         "X-NCP-APIGW-API-KEY-ID": "pg98qmcln0",
@@ -35,18 +36,18 @@ export default function RegisterInput() {
       }  
     })
       .then((response) => {
-        console.log(response.data)
+        setlatitude(response.data.addresses[0].y)
+        setLogitude(response.data.addresses[0].x)
     })
   }
-
 
   const storeRegister =()=>{
       //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
       axios.post('http://15.164.28.246:8000/api/v1/stores/signup/',{
         name: name,
         phone_num: phone_num,
-        latitude: 0,
-        longitude: 0,
+        latitude: latitude,
+        longitude: longitude,
         email : email,
         password: password})
         .then((response) => {
@@ -78,7 +79,6 @@ export default function RegisterInput() {
         </Box>
         
         <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
-        <button onClick={storeSearch} className="ButtonStyle" >주소 테스트</button>
     </div>
   );
 }
