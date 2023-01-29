@@ -39,7 +39,7 @@ function SubButton() {
         </div> */}
         <br/>
         <button onClick={iswaitingChange} className={`stopRegisterButton ${is_waiting ? 'closeBg' : 'openBg'}`} >
-          {is_waiting ? 'CLOSE' : 'OPEN'} 
+          {is_waiting ? '대기 마감' : '대기 시작'} 
         </button>
         {/* <div className=' stopRegisterText'>
         {is_waiting ? '대기 마감' : '대기 시작'} 
