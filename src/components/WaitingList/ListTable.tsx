@@ -27,8 +27,10 @@ interface Column {
   format?: (value: number) => string;
 }
 
+
 const columns: readonly Column[] = [
-  { id: 'waiting_id', label: '순번', minWidth: 30, align: 'center', },
+
+  { id: 'waiting_id', label: '순번', minWidth: 30, align: 'center', }, //(count++).toString()
   { id: 'name', label: '예약자', minWidth: 30, align: 'center' },
   {
     id: 'people',
@@ -36,6 +38,7 @@ const columns: readonly Column[] = [
     minWidth: 30,
     align: 'center',
   },
+  
   {
     id: 'phone_num',
     label: '휴대폰 번호',
@@ -44,11 +47,13 @@ const columns: readonly Column[] = [
   },
 ];
 
-export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
+export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefined; setTemp:React.Dispatch<React.SetStateAction<res | undefined>>}) { //, {temp}
+    //const [temp, setTemp] = useState<res>();
     let abc: number;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     //const [rows, setRows] = React.useState<waitings[]|undefined>(waiting);
+    
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage)
         console.log(waiting)
@@ -62,10 +67,13 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
     //대기목록 MUI 안에 있는 호출 버튼
     const Call =()=>{
       axios.post('http://15.164.28.246:8000/api/v1/stores/notifications/',{
-          token : localStorage.getItem('accessToken')  
+        waiting_id: waiting[index].waiting_id
+    }, 
+    {
+      headers : {Authorization: localStorage.getItem('accessToken')}
     })
         .then((response) => {
-          console.log(response.data)
+          console.log('성공')
       }) 
         .catch((error) => { 
           console.log('호출 실패');
@@ -75,7 +83,6 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
     //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
       if(waiting !== undefined) {
-      console.log(waiting[index].waiting_id);
         axios.patch('http://15.164.28.246:8000/api/v1/stores/waitings/',{
           waiting_id: waiting[index].waiting_id
         },
@@ -84,7 +91,10 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
         }
         )
         .then((response) => {
+          // console.log("durlghkrdls")
+          // console.log(response);
           console.log('[입장완료]' + localStorage.getItem('accessToken'))
+        
         }) 
         .catch((error) => { 
           console.log('Error!');
@@ -94,9 +104,9 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
     //대기목록 MUI 안에 있는 대기취소 버튼
       const waitingCancel = (index: number) => {
         if(waiting != undefined) {
-          //console.log(index);  //배열(?) 확인용
-          //console.log(waiting[index].waiting_id);
-          axios.patch<res>('http://15.164.28.246:8000/api/v1/stores/cancellations/',{
+          // console.log(waiting[index]);  //배열(?) 확인용
+          // console.log(waiting[index].waiting_id);
+         axios.patch<res>('http://15.164.28.246:8000/api/v1/stores/cancellations/',{
             waiting_id: waiting[index].waiting_id   
           },
           {
@@ -104,13 +114,21 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
           }
           )
           .then((response) => {
+            //민아) 뭐가 다른지 확인
+          //   console.log(response);  //차이ㅏㄱ 뭔가??
+          //   console.log(response.data)
+          //console.log(response.data); // 최신 상태 배열
+         // setTemp(pre => ({...pre,waiting:[...response.data.waiting]}));
             console.log('[대기강제취소]' + localStorage.getItem('accessToken'))
           })
           .catch((error) => { 
             console.log('Error!');
           });
         }}
-      
+        
+
+       
+     
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>
@@ -133,22 +151,27 @@ export default function ListTable({waiting}:{waiting:waitings[]|undefined}) {
           </TableHead>
           <TableBody>
             
+            
             {waiting?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row:any, index:number) => {
+
                 if(waiting != undefined) {
                    abc = waiting.length
                 }
+               
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.waiting_id}>
-                    {columns.map((column:any) => {
-                      console.log(waiting)
+                    {columns.map((column:any, i:number) => {
+                      //console.log(waiting)
                       const value = row[column.id];
-                     
+                  
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
+                          
+                           {column?.id === 'waiting_id'
+                            ? (page*rowsPerPage)+(index+1)  : value} 
+                           
+                             
                         </TableCell>
                       );
                     })}
@@ -185,4 +208,3 @@ ListTable.defaultProps = {
  waiting:[]
 }
 
-//

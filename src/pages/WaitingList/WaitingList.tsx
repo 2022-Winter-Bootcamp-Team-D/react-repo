@@ -58,8 +58,6 @@ import { NULL } from "sass";
 //         waiting_id: 3
 //       },
     
-
-
 //   ]
 
 function WaitingList() {
@@ -76,6 +74,7 @@ function WaitingList() {
   //     people: 4,
   //     phone_num: '010-0000-0000'
   //   }]}
+  
   const getList = async() => {
     //const res = await rankingService.getMyRanking();
     axios.get<res>('http://15.164.28.246:8000/api/v1/stores/waitings/',
@@ -94,8 +93,8 @@ function WaitingList() {
     getList()
   }, [])
   
-  console.log('민아 확인')
-  console.log(temp?.data);
+  // console.log('민아 temp 확인')
+  console.log(temp);
   
   return (
     <Container style={{display: 'flex', overflow: 'hidden'}}>
@@ -109,7 +108,8 @@ function WaitingList() {
       <div>
         <TableTitle/>
         <ListTableStyle/>
-        <ListTable waiting={temp?.data} />
+        <ListTable waiting={temp?.data} setTemp={setTemp} /> 
+        {/* temp={temp} */}
         {/* <ListTable waiting={test} /> */}
         <SubButton/>
       </div>
