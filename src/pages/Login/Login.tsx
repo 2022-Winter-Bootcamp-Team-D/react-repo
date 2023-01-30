@@ -7,7 +7,6 @@ import {
 import axios from "axios";
 import { access } from "fs";
 
-// 로그인, response body - access, refresh
 
 function Login() {
     document.body.style.backgroundColor = "#FFFBD9";
@@ -18,7 +17,6 @@ function Login() {
     const navigate = useNavigate();
 
     const storeLogin =()=>{
-        //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
         axios.post('http://15.164.28.246:8000/api/v1/stores/login/',{
             email: email,
             password: password})

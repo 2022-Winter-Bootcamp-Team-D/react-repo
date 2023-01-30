@@ -8,11 +8,9 @@ function TableTitle() {
     <Container>
       <div id = "wrap">
         <br/>
-        {/* <div className='tableTitleLineTop'></div> */}
         <div className='tableTitle'>
           대기 목록
         </div>
-        {/* <div className='tableTitleLineBottom'></div> */}
       </div>
     </Container>
   );

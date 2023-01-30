@@ -65,18 +65,8 @@ function WaitingList() {
   const [temp, setTemp] = useState<res>();
 
   
-  // {  // 지정을 해줬더라도 덮어지기 때문에 이대로 진행해도 괜찮다!
-  //   information: '',
-  //   is_waiting : true, 
-  //   waiting : [{
-  //     waiting_id : 0,
-  //     name: '민아',
-  //     people: 4,
-  //     phone_num: '010-0000-0000'
-  //   }]}
   
   const getList = async() => {
-    //const res = await rankingService.getMyRanking();
     axios.get<res>('http://15.164.28.246:8000/api/v1/stores/waitings/',
     {
       headers : {Authorization: localStorage.getItem('accessToken')}
@@ -93,15 +83,12 @@ function WaitingList() {
     getList()
   }, [])
   
-  // console.log('민아 temp 확인')
-  console.log(temp);
-  
+
   return (
     <Container style={{display: 'flex', overflow: 'hidden'}}>
       <div>
         <Logo/>
         <Calender/> 
-        {/* axios 받아왔던 information정보들을 StoreInformation컴포넌트 호출할 때 넣어줘야해, 그래야 컴포넌트 값이 넘어가 / 이때 useLocation 사용?*/}
         <StoreInformation information={temp?.information}/>
       </div>
       <div className="VerticalLine"></div>
@@ -109,8 +96,6 @@ function WaitingList() {
         <TableTitle/>
         <ListTableStyle/>
         <ListTable waiting={temp?.data} setTemp={setTemp} /> 
-        {/* temp={temp} */}
-        {/* <ListTable waiting={test} /> */}
         <SubButton/>
       </div>
     </Container>

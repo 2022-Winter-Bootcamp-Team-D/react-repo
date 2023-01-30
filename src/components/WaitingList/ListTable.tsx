@@ -47,12 +47,10 @@ const columns: readonly Column[] = [
   },
 ];
 
-export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefined; setTemp:React.Dispatch<React.SetStateAction<res | undefined>>}) { //, {temp}
-    //const [temp, setTemp] = useState<res>();
+export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefined; setTemp:React.Dispatch<React.SetStateAction<res | undefined>>}) { 
     let abc: number;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    //const [rows, setRows] = React.useState<waitings[]|undefined>(waiting);
     
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage)
@@ -91,10 +89,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
         }
         )
         .then((response) => {
-          // console.log("durlghkrdls")
-          // console.log(response);
           console.log('[입장완료]' + localStorage.getItem('accessToken'))
-        
         }) 
         .catch((error) => { 
           console.log('Error!');
@@ -104,8 +99,6 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
     //대기목록 MUI 안에 있는 대기취소 버튼
       const waitingCancel = (index: number) => {
         if(waiting != undefined) {
-          // console.log(waiting[index]);  //배열(?) 확인용
-          // console.log(waiting[index].waiting_id);
          axios.patch<res>('http://15.164.28.246:8000/api/v1/stores/cancellations/',{
             waiting_id: waiting[index].waiting_id   
           },
@@ -114,11 +107,8 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
           }
           )
           .then((response) => {
-            //민아) 뭐가 다른지 확인
-          //   console.log(response);  //차이ㅏㄱ 뭔가??
-          //   console.log(response.data)
-          //console.log(response.data); // 최신 상태 배열
-         // setTemp(pre => ({...pre,waiting:[...response.data.waiting]}));
+            //민아) 행 삭제 시도
+            // setTemp(pre => ({...pre,waiting:[...response.data.waiting]}));
             console.log('[대기강제취소]' + localStorage.getItem('accessToken'))
           })
           .catch((error) => { 
@@ -127,8 +117,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
         }}
         
 
-       
-     
+
   return (
     <Paper className='tableStyle'>
       <TableContainer sx={{ maxHeight: 500 }}>
@@ -176,7 +165,6 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
                       );
                     })}
                     <TableCell onClick={() => Call()} align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
-                    {/* waiting_id 대신 index를 넣어줘야 waiting_id가 6, 7 일 때 배열 값과 달라서 발생하는 에러를 해결할 수 있음 */}
                     <TableCell  onClick={() => Start(index)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
                     <TableCell onClick={() => waitingCancel(index)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
@@ -198,11 +186,6 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
     </Paper>
   );
 }
-// 파일에서 command+shift+f로 검색
-// TablePagination의 count가 undefined,count에서 waiting을 못 읽었어!,
-// 왜냐면 useEffect가 실행되기 전 컴포넌트(waiting={temp?.data})가 먼저 실행됐기 때문에 undefined 상태,
-// undefined상태에서 waiting을 slice 등을 해주라고 하니까 오류가 발생한 거야
-// 오류를 해결하기 위해서 undefined일 때 waiting을 빈 배열로 만들어 줘서 초기값을 만들어준겨
 
 ListTable.defaultProps = {
  waiting:[]

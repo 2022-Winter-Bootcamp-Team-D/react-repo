@@ -6,15 +6,6 @@ import {Link, useNavigate} from "react-router-dom";
 // import StoreLocation from "./StoreLocation";
 import axios from 'axios';
 
-// declare global {
-//   interface Window {
-//     kakao: any;
-//   }
-// }
-
-// function A {
-//   latitude: 
-// }
 
 export default function RegisterInput() {
   const [name, setName] = useState('')
@@ -42,7 +33,6 @@ export default function RegisterInput() {
   }
 
   const storeRegister =()=>{
-      //axios.post(url : post가 연결되어야 할 api주소, data : 백엔드에서 정의한 request body).then(앞 코드가 정상작동하면 실행되는 다음 행위)
       axios.post('http://15.164.28.246:8000/api/v1/stores/signup/',{
         name: name,
         phone_num: phone_num,
@@ -59,7 +49,6 @@ export default function RegisterInput() {
           navigate("/WaitingList")
       })
   }
-  //console.log(localStorage.getItem("id")) 로컬스토리지에서 저장되어있는 값을 꺼내와서 console.log에 출력해서 확인하는 코드(getItem)
 
   return (
     <div>
