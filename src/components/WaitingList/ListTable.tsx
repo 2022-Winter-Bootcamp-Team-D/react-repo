@@ -63,7 +63,8 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
     };
 
     //대기목록 MUI 안에 있는 호출 버튼
-    const Call =()=>{
+    const Call =(index: number)=>{
+      if(waiting !== undefined) {
       axios.post('http://15.164.28.246:8000/api/v1/stores/notifications/',{
         waiting_id: waiting[index].waiting_id
     }, 
@@ -76,7 +77,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
         .catch((error) => { 
           console.log('호출 실패');
         });
-  }
+  }}
 
     //대기목록 MUI 안에 있는 입장완료 버튼
     const Start = (index: number) => {
@@ -164,7 +165,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
                         </TableCell>
                       );
                     })}
-                    <TableCell onClick={() => Call()} align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
+                    <TableCell onClick={() => Call(index)} align="center"><IconButton><NotificationsActiveIcon color="warning"/></IconButton></TableCell>
                     <TableCell  onClick={() => Start(index)} align="center"><IconButton><CheckCircleIcon color="success"/></IconButton></TableCell>
                     <TableCell onClick={() => waitingCancel(index)} align="center"><IconButton><CancelIcon color="error"/></IconButton></TableCell>
                   </TableRow>
