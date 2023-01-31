@@ -9,19 +9,23 @@ interface Props {
 //type Info = {text : string}
 
 function StoreInformation(information: Props) {
-  //const [text, setText] = useState<string>({setInformation})
   const onChange = (event: any) => (
     setInfo(event.target.value)
   );
 
-  const [info, setInfo] = useState(information);  //useState('information'); 이렇게 작성되면 텍스트 information만 작성되던데 이게 맞는지!
-
+  const [info, setInfo] = useState(information);  
+  
   const storeInformationText = () => {
-    axios.patch('http://localhost:8000/api/v1/stores/details/',{
-      //store_id: localStorage.getItem("store_id"), //- 우선 임의의 값으로 지정, 로그인 api완료 후 추후 진행
-      information: info  //information: info = 처음에 가져온 가게설명 초기값 : 변경되는 가게설명수정
+    axios.patch('http://15.164.28.246:8000/api/v1/stores/details/',{
+      information: info 
+    },
+    {
+      headers : {Authorization: localStorage.getItem('accessToken')}
+    }
+    )
+    .then((response) => {
+      console.log('[가게설명]' + localStorage.getItem('accessToken'))
     })
-    .then(res => setInfo(info))
     .catch((error) => { 
       console.log('Error!');
     });
