@@ -27,8 +27,10 @@ export default function RegisterInput() {
       }
     })
       .then((response) => {
+        if (latitude == 0 && longitude == 0) {
         setlatitude(response.data.addresses[0].x)
         setLogitude(response.data.addresses[0].y)
+        }
         console.log(latitude)
         console.log(longitude)
         console.log(posts)
@@ -69,8 +71,10 @@ export default function RegisterInput() {
           <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
           <TextField type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
         </Box>
-        
+        <button onClick={storeSearch} className="addressButton" >주소 저장</button>
+        <div/>
         <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
     </div>
+
   );
 }
