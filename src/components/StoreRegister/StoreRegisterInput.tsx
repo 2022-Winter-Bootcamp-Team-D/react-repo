@@ -19,16 +19,19 @@ export default function RegisterInput() {
   
 
   const storeSearch =()=>{
-    axios.get(`map-geocode/v2/geocode?query=${posts}`,
+    axios.get(`/map-geocode/v2/geocode?query=${posts}`,
     {
       headers: {
         "X-NCP-APIGW-API-KEY-ID": "pg98qmcln0",
-        "X-NCP-APIGW-API-KEY": "ELFgrKAgPdLsxeQDxHBhqv1jQvrpZuVfDJ4Jcmrf"
-      }  
+        "X-NCP-APIGW-API-KEY": "cxtbeMsR415xE7AIC9WztlemMWvHfGxa5kgsqeJh"
+      }
     })
       .then((response) => {
-        setlatitude(response.data.addresses[0].y)
-        setLogitude(response.data.addresses[0].x)
+        setlatitude(response.data.addresses[0].x)
+        setLogitude(response.data.addresses[0].y)
+        console.log(latitude)
+        console.log(longitude)
+        console.log(posts)
     })
   }
 
