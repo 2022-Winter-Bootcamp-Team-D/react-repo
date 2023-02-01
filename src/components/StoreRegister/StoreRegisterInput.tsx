@@ -28,8 +28,8 @@ export default function RegisterInput() {
     })
       .then((response) => {
         if (latitude == 0 && longitude == 0) {
-        setlatitude(response.data.addresses[0].x)
-        setLogitude(response.data.addresses[0].y)
+        setlatitude(response.data.addresses[0].y)
+        setLogitude(response.data.addresses[0].x)
         }
         console.log(latitude)
         console.log(longitude)
