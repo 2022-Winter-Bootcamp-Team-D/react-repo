@@ -20,15 +20,21 @@ export default function RegisterInput() {
 
   const storeSearch =()=>{
     axios.get(`https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${posts}`,
+
     {
       headers: {
         "X-NCP-APIGW-API-KEY-ID": "pg98qmcln0",
-        "X-NCP-APIGW-API-KEY": "ELFgrKAgPdLsxeQDxHBhqv1jQvrpZuVfDJ4Jcmrf"
-      }  
+        "X-NCP-APIGW-API-KEY": "cxtbeMsR415xE7AIC9WztlemMWvHfGxa5kgsqeJh"
+      }
     })
       .then((response) => {
+        if (latitude == 0 && longitude == 0) {
         setlatitude(response.data.addresses[0].y)
         setLogitude(response.data.addresses[0].x)
+        }
+        console.log(latitude)
+        console.log(longitude)
+        console.log(posts)
     })
   }
 
@@ -66,8 +72,10 @@ export default function RegisterInput() {
           <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
           <TextField type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
         </Box>
-        
+        <button onClick={storeSearch} className="addressButton" >주소 저장</button>
+        <div/>
         <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
     </div>
+
   );
 }
