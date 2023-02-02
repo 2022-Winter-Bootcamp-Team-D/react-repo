@@ -19,7 +19,7 @@ export default function RegisterInput() {
   
 
   const storeSearch =()=>{
-    axios.get(`https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${posts}`,
+    axios.get(`map-geocode/v2/geocode?query=${posts}`,
 
     {
       headers: {
