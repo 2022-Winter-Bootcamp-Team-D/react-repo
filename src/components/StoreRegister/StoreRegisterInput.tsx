@@ -19,7 +19,8 @@ export default function RegisterInput() {
   
 
   const storeSearch =()=>{
-    axios.get(`/map-geocode/v2/geocode?query=${posts}`,
+    axios.get(`https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${posts}`,
+
     {
       headers: {
         "X-NCP-APIGW-API-KEY-ID": "pg98qmcln0",
