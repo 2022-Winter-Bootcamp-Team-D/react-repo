@@ -27,6 +27,7 @@ function StoreInformation(information: Props) {
       console.log('[가게설명]' + localStorage.getItem('accessToken'))
     })
     .catch((error) => { 
+      console.log(localStorage.getItem('accessToken'))
       console.log('Error!');
     });
   }

@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom"; 
 
-function SubButton() {
+function Logo() {
   
   return (
     <div>
@@ -23,4 +23,4 @@ function SubButton() {
   );
 }
 
-export default SubButton;
+export default Logo;
