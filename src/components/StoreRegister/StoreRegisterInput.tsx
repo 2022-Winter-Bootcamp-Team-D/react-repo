@@ -58,21 +58,17 @@ export default function RegisterInput() {
 
   return (
     <div>
-        <Box className="InputStyle"
-          component="form"
-          sx={{
-              '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField onChange={(e)=>{setName(e.target.value)}} id="standard-basic" label="가게명 / 업소명" variant="standard" />
-          <TextField  onChange={(e)=>{setPhone_num(e.target.value)}}id="standard-basic" label="가게 번호" variant="standard" />
-          <TextField onChange={(e)=>{setPosts((e.target.value))}}id="standard-basic" label="가게 주소" variant="standard" />
-          <TextField onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
-          <TextField type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
-        </Box>
-        <button onClick={storeSearch} className="addressButton" >주소 저장</button>
+        <div className="InputStyle">
+          <TextField className= "lineA" onChange={(e)=>{setName(e.target.value)}} id="standard-basic" label="가게명 / 업소명" variant="standard" />
+          <TextField className= "lineA"onChange={(e)=>{setPhone_num(e.target.value)}}id="standard-basic" label="가게 번호" variant="standard" />
+          <div className='container'>
+          <TextField className='lineB' onChange={(e)=>{setPosts((e.target.value))}}id="standard-basic" label="가게 주소" variant="standard" />
+          <button onClick={storeSearch} className="addressButton" >주소 저장</button>
+          </div>
+          <TextField className= "lineA" onChange={(e)=>{setEmail(e.target.value)}}id="standard-basic" label="이메일 주소" variant="standard" />
+          <TextField className= "lineA" type="password" onChange={(e)=>{setPassword(e.target.value)}}id="standard-basic" label="비밀번호" variant="standard" />
+        </div>
+        
         <div/>
         <button onClick={storeRegister} className="ButtonStyle" >가게 등록</button>
     </div>

@@ -159,9 +159,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
                         <TableCell key={column.id} align={column.align}>
                           
                            {column?.id === 'waiting_id'
-                            ? (page*rowsPerPage)+(index+1)  : value} 
-                           
-                             
+                            ? (page*rowsPerPage)+(index+1)  : value}
                         </TableCell>
                       );
                     })}
@@ -176,7 +174,7 @@ export default function ListTable({waiting ,setTemp}:{waiting:waitings[]|undefin
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        // rowsPerPageOptions={[5, 10, 25]}
         component="div"
         count= {waiting?.length as number}
         rowsPerPage={rowsPerPage}

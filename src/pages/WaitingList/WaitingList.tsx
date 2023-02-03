@@ -88,7 +88,7 @@ function WaitingList() {
     <Container style={{display: 'flex', overflow: 'hidden'}}>
       <div>
         <Logo/>
-        <Calender/> 
+        <Calender/>
         <StoreInformation information={temp?.information}/>
       </div>
       <div className="VerticalLine"></div>
